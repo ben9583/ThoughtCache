@@ -1,0 +1,54 @@
+body {
+	background-color: #c4c4c4;
+}
+h1 {
+	font-family: sans-serif;
+	font-size: 7em;
+}
+h5 {
+	font-family: sans-serif;
+	font-size: 2em
+}
+.drop {
+	color: #000000;
+	background-color: #c4c4c4;
+	width: 50%;
+	height: 100vh;
+	float: left;
+	transition: background-color 0.5s, width 0.5s;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	z-index: -10;
+}
+.fetch {
+	color: #ffffff;
+	background-color: #24272e;
+	width: 50%;
+	height: 100vh;
+	float: right;
+	transition: background-color 0.5s, width 0.5s;
+}
+.drop:hover {
+	background-color:#24272e;
+	color:#ffffff;
+}
+.drop:hover ~ #title {
+	color:#ffffff;
+}
+.fetch:hover {
+	background-color:#24272e;
+	color:#ffffff;
+}
+.drop:hover ~ .fetch {
+	background-color: #c4c4c4;
+	color: #000000;
+}
+.drop:active {
+	width: 100%;
+}
+/*
+.fetch:active {
+	width: 100%;
+}
+*/

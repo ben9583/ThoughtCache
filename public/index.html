@@ -14,95 +14,29 @@
 	<script defer src="/__/firebase/7.1.0/firebase-storage.js"></script>
 	<!-- initialize the SDK after all desired features are loaded -->
 	<script defer src="/__/firebase/init.js"></script>
+	<!-- link to the main css file -->
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<style>
-		h1 {
-			font-family: sans-serif;
-			font-size: 7em;
-		}
-		h5 {
-			font-family: sans-serif;
-			font-size: 2em
-		}
-		.drop {
-			color: #000000;
-			background-color: #c4c4c4;
-			width: 50%;
-			height: 100vh;
-			float: left;
-			transition: background-color 0.5s, width 0.5s;
-			position: relative;
-			top: 0px;
-			left: 0px;
-			z-index: -10;
-		}
-		.fetch {
-			color: #ffffff;
-			background-color: #24272e;
-			width: 50%;
-			height: 100vh;
-			float: right;
-			transition: background-color 0.5s, width 0.5s;
-		}
-		.drop:hover {
-			background-color:#24272e;
-			color:#ffffff;
-		}
-		.fetch:hover {
-			background-color:#24272e;
-			color:#ffffff;
-		}
-		.drop:hover ~ .fetch {
-			background-color: #c4c4c4;
-			color: #000000;
-		}
-		.drop:active {
-			width: 100%;
-		}
-		/*
-		.fetch:active {
-			width: 100%;
-		}
-		*/
+		/* nothing really should go here (see style.css) */
 	</style>
 </head>
 <body style="margin:0;overflow:hidden">
 	<div class="drop" id="drop">
-		<h5 style="margin:0;margin-left:10px;position:absolute">ThoughtCache</h5>
-		<h1 style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">Drop</h1>
+		<h1 style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">drop</h1>
 	</div>
 	<div class="fetch" id="fetch">
 		<h1 style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">fetch</h1>
 	</div>
-	<script>
-		function sleep(ms) {
-			return new Promise(resolve => setTimeout(resolve, ms));
-		}
-		async function main() {
-			document.getElementsByClassName("fetch")[0].addEventListener("click", function() {
-				document.getElementsByClassName("drop")[0].style.display = "none"
-				sleep(500);
-				console.log("bruh2")
-				this.style.width = "100%"
-			});
-			document.getElementsByClassName("drop")[0].addEventListener("click", function() {
-				document.getElementsByClassName("fetch")[0].style.display = "none"
-				sleep(500);
-				console.log("bruh2")
-				this.style.width = "100%"
-			});
-		}
-
-		main()
-	</script>
+	<h5 id="title" style="margin:0;margin-left:10px;position:absolute">ThoughtCache</h5>
+	<script src="./js/main.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			try {
 				let app = firebase.app();
 				let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-				document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+				console.log("Success");
 			} catch (e) {
-				console.error(e);
-				document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+				console.log("Error: " + e);
 			}
 		});
 	</script>
