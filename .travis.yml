@@ -8,7 +8,6 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-    tags: true
   token:
     secure: "b0uL7tm7/v8kkbYtpRXsXF517swBS+aTsR8B2G26BDLw9/5fB4EspWjXOwT50Bw2nKlVRazDqe1YNbEltLvDGviIKcfcr76l5z1Dmy4rTh6ql3iS4IY3Ztj95mEwPjOXDfJzACALE0C6X/tx2MU1Jwci2HSkXXHtc1ZirhTe1KLJt78ey9P3CyraEC/mestfbNuD1sTdpnHxdxIxKIKSIqHmEAsPnbrzwfr5X1GgzsYCUzjpSamewTlfjwPhJj//LxNEeQHMVEEfdbKk913JV3OCDgcrAuDA4NEK+sw4Zp3VPeDM1ZHqgzsw3Z32zPUrBPdXiXN2IuiO5rLjaCvTFtO58TtQqQSEY85IITNkmCyBLyB6wBiXsmkNCBRXv9EjnKwjKHSTBlk/grxFd86j1cXIzLwHh71kLrFFpkYpU4Fsti5u2jssTHK+EfQXLNqtwHE4hNCU0/ZF97xtA6ppjlp5SUBVO0K82xV8gSX4OoSdQVoWQrr9wHsyys+sQVtU/2A1OtmQh1VquBq9kq7DMovDzsa3+Y5QBxdTrs8mVwa++lOxQRK56ZHEyTIOnY+65NCCMYINr1qBjAlEEOQYtNKCrZCs5jtLzZa/sZv5GCCT0OWbVoe+QmeowFx6dU+f+NwPqxqnJJIX/gZBKkYU07RJmsJhHTphgg8CVmZnbSM="
   project: thoughtcache
