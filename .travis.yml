@@ -10,6 +10,6 @@ install:
   - cd ..
 after_success:
   - |
-    if [$TRAVIS_BRANCH == "master"]; then
+    if [ $TRAVIS_BRANCH == "master" ]; then
       firebase deploy --project thoughtcache --token $FIREBASE_TOKEN;
     fi
