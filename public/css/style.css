@@ -1,5 +1,7 @@
 body {
 	background-color: #c4c4c4;
+	margin:0;
+	overflow:hidden;
 }
 h1 {
 	font-family: sans-serif;
@@ -8,6 +10,13 @@ h1 {
 h5 {
 	font-family: sans-serif;
 	font-size: 2.5vw
+}
+#title {
+	margin:0;
+	position:absolute;
+	float: right;
+	right: 51%;
+	transition: right 0.5s;
 }
 .drop {
 	color: #24272e;
@@ -29,26 +38,18 @@ h5 {
 	float: right;
 	transition: background-color 0.5s, width 0.5s;
 }
-.drop:hover {
+.drop-before:hover {
 	background-color:#24272e;
 	color:#c4c4c4;
 }
 .drop:hover ~ #title {
 	color:#c4c4c4;
 }
-.fetch:hover {
+.fetch-before:hover {
 	background-color:#24272e;
 	color:#c4c4c4;
 }
-.drop:hover ~ .fetch {
+.drop-before:hover ~ .fetch {
 	background-color: #c4c4c4;
 	color: #24272e;
 }
-.drop:active {
-	width: 100%;
-}
-/*
-.fetch:active {
-	width: 100%;
-}
-*/
