@@ -19,7 +19,7 @@ h5 {
 	transition: right 0.5s;
 }
 .drop {
-	color: #000000;
+	color: #24272e;
 	background-color: #c4c4c4;
 	width: 50%;
 	height: 100vh;
@@ -31,7 +31,7 @@ h5 {
 	z-index: -10;
 }
 .fetch {
-	color: #ffffff;
+	color: #c4c4c4;
 	background-color: #24272e;
 	width: 50%;
 	height: 100vh;
@@ -40,16 +40,16 @@ h5 {
 }
 .drop-before:hover {
 	background-color:#24272e;
-	color:#ffffff;
+	color:#c4c4c4;
 }
 .drop:hover ~ #title {
-	color:#ffffff;
+	color:#c4c4c4;
 }
 .fetch-before:hover {
 	background-color:#24272e;
-	color:#ffffff;
+	color:#c4c4c4;
 }
 .drop-before:hover ~ .fetch {
 	background-color: #c4c4c4;
-	color: #000000;
+	color: #24272e;
 }
