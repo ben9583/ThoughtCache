@@ -20,14 +20,16 @@
 		/* nothing really should go here (see style.css) */
 	</style>
 </head>
-<body style="margin:0;overflow:hidden">
-	<div class="drop" id="drop">
-		<h1 style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">drop</h1>
+<body>
+	<div style="width:100%">
+		<div class="drop drop-before" id="drop">
+			<h1 class="drop-text" style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">drop</h1>
+		</div>
+		<div class="fetch" id="fetch">
+			<h1 class="fetch-text" style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">fetch</h1>
+		</div>
+		<h5 id="title">ThoughtCache</h5>
 	</div>
-	<div class="fetch" id="fetch">
-		<h1 style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">fetch</h1>
-	</div>
-	<h5 id="title" style="margin:0;margin-left:10px;position:absolute">ThoughtCache</h5>
 	<script src="./js/main.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
