@@ -9,4 +9,7 @@ install:
   - npm install
   - cd ..
 after_success:
-  - firebase deploy --project thoughtcache --token $FIREBASE_TOKEN
+  - |
+    if [$TRAVIS_BRANCH == "master"]; then
+      firebase deploy --project thoughtcache --token $FIREBASE_TOKEN;
+    fi
