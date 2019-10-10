@@ -2,7 +2,7 @@ body {
   margin: 0;
 	overflow: hidden;
 	background-color: #1e3466;
-	font-family: sans-serif;
+	font-family: Helvetica, sans-serif;
 }
 #title {
 	font-size: 2.5vw;
