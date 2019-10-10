@@ -30,11 +30,11 @@ body {
 }
 #cache-pane {
 	color: #ffffff;
-	background-color: #000000;
+	background-color: #1e3466;
 	float: left;
 }
 #fetch-pane {
-	color: #000000;
+	color: #1e3466;
 	background-color: #ffffff;
 	float: right;
 }
