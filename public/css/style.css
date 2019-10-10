@@ -1,6 +1,7 @@
 body {
-	margin: 0;
+  margin: 0;
 	overflow: hidden;
+	background-color: #1e3466;
 	font-family: sans-serif;
 }
 #title {
