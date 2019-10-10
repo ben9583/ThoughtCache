@@ -40,9 +40,9 @@ function dropClick() {
 
 	dropElem.style["background-color"] = "#24272e";
 	fetchElem.style["background-color"] = "#c4c4c4";
-	dropElem.style.color = "#ffffff";
+	dropElem.style.color = "#c4c4c4";
 
-	document.getElementById("title").style.color = "#ffffff"
+	document.getElementById("title").style.color = "#c4c4c4"
 	document.getElementById("title").style.float = "left"
 	document.getElementById("title").style.right = "82%"
 	document.getElementsByClassName("fetch-text")[0].style.visibility = "hidden"
@@ -75,7 +75,7 @@ function fetchClick() {
 
 	this.style.width = "94%"
 	dropElem.style.width = "6%"
-	document.getElementById("title").style.color = "#ffffff"
+	document.getElementById("title").style.color = "#c4c4c4"
 	dropElem.classList.remove("drop-before")
 	dropElem.classList.add("drop-after")
 	fetchElem.classList.remove("fetch-before")
@@ -91,7 +91,7 @@ function toggleDrop() {
 	var dropElem = document.getElementsByClassName("drop")[0]
 	var fetchElem = document.getElementsByClassName("fetch")[0]
 
-	document.getElementById("title").style.color = "#000000"
+	document.getElementById("title").style.color = "#24272e"
 	document.getElementById("title").style.float = "left"
 	document.getElementById("title").style.right = "82%"
 }
@@ -102,7 +102,7 @@ function toggleFetch() {
 
 	document.getElementById("title").style.transition += ", color 0.5s";
 
-	document.getElementById("title").style.color = "#ffffff"
+	document.getElementById("title").style.color = "#c4c4c4"
 	document.getElementById("title").style.float = "right"
 	document.getElementById("title").style.right = "1%"
 }
