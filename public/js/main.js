@@ -2,114 +2,81 @@ function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function setStyle(objId, propertyObject) {
+	var elem = document.getElementById(objId);
+	for (var property in propertyObject)
+    	elem.style[property] = propertyObject[property];
+}
+
+function cacheHover() {
+	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff"});
+	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466"});
+	setStyle("title", {"color":"#ffffff"});
+}
+
 function fetchHover() {
-	var dropElem = document.getElementsByClassName("drop")[0]
-	var fetchElem = document.getElementsByClassName("fetch")[0]
-
-	dropElem.style.width = "92%"
-	fetchElem.style.width = "8%"
+	setStyle("fetch-pane", {"background-color":"#1e3466", "color":"#ffffff"});
+	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466"});
+	setStyle("title", {"color":"#1e3466"});
 }
 
-function fetchHoverOut() {
-	var dropElem = document.getElementsByClassName("drop")[0]
-	var fetchElem = document.getElementsByClassName("fetch")[0]
-
-	dropElem.style.width = "94%"
-	fetchElem.style.width = "6%"
+function cachePeekIn() {
+	setStyle("cache-pane", {"width":"6%"});
+	setStyle("fetch-pane", {"width":"94%"});
 }
 
-function dropHover() {
-	var dropElem = document.getElementsByClassName("drop")[0]
-	var fetchElem = document.getElementsByClassName("fetch")[0]
-
-	fetchElem.style.width = "92%"
-	dropElem.style.width = "8%"
+function cachePeekOut() {
+	setStyle("cache-pane", {"width":"5%"});
+	setStyle("fetch-pane", {"width":"95%"});
 }
 
-function dropHoverOut() {
-	var dropElem = document.getElementsByClassName("drop")[0]
-	var fetchElem = document.getElementsByClassName("fetch")[0]
-
-	fetchElem.style.width = "94%"
-	dropElem.style.width = "6%"
+function fetchPeekIn() {
+	setStyle("fetch-pane", {"width":"6%"});
+	setStyle("cache-pane", {"width":"94%"});
 }
 
-function dropClick() {
-	var dropElem = document.getElementsByClassName("drop")[0]
-	var fetchElem = document.getElementsByClassName("fetch")[0]
+function fetchPeekOut() {
+	setStyle("fetch-pane", {"width":"5%"});
+	setStyle("cache-pane", {"width":"95%"});
+}
 
-	dropElem.style["background-color"] = "#24272e";
-	fetchElem.style["background-color"] = "#c4c4c4";
-	dropElem.style.color = "#c4c4c4";
-
-	document.getElementById("title").style.color = "#c4c4c4"
-	document.getElementById("title").style.float = "left"
-	document.getElementById("title").style.right = "82%"
-	document.getElementsByClassName("fetch-text")[0].style.visibility = "hidden"
-	document.getElementsByClassName("drop-text")[0].style.visibility = "visible"
-
-	this.style.width = "94%"
-	fetchElem.style.width = "6%"
-	dropElem.classList.remove("drop-before")
-	dropElem.classList.add("drop-after")
-	fetchElem.classList.remove("fetch-before")
-	fetchElem.classList.add("fetch-after")
-
-	fetchElem.addEventListener("mouseenter", fetchHover)
-	fetchElem.addEventListener("mouseout", fetchHoverOut)
-	dropElem.removeEventListener("mouseenter", dropHover)
-	dropElem.removeEventListener("mouseout", dropHoverOut)
+function cacheClick() {
+	var cacheElem = document.getElementById("cache-pane");
+	var fetchElem = document.getElementById("fetch-pane");
+	cacheElem.removeEventListener("mouseover", cacheHover);
+	fetchElem.removeEventListener("mouseover", fetchHover);
+	cacheElem.removeEventListener("mouseenter", cachePeekIn);
+	cacheElem.removeEventListener("mouseleave", cachePeekOut);
+	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff", "width":"95%"});
+	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"5%"});
+	setStyle("title", {"color":"#ffffff", "left":"1%"});
+	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
+	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
+	fetchElem.addEventListener("mouseenter", fetchPeekIn);
+	fetchElem.addEventListener("mouseleave", fetchPeekOut);
 }
 
 function fetchClick() {
-	var dropElem = document.getElementsByClassName("drop")[0]
-	var fetchElem = document.getElementsByClassName("fetch")[0]
-
-	fetchElem.style["background-color"] = "#24272e";
-	dropElem.style["background-color"] = "#c4c4c4";
-
-	document.getElementById("title").style.transition += ", color 0.5s";
-	document.getElementById("title").style.right = "1%"
-	document.getElementsByClassName("drop-text")[0].style.visibility = "hidden"
-	document.getElementsByClassName("fetch-text")[0].style.visibility = "visible"
-
-	this.style.width = "94%"
-	dropElem.style.width = "6%"
-	document.getElementById("title").style.color = "#c4c4c4"
-	dropElem.classList.remove("drop-before")
-	dropElem.classList.add("drop-after")
-	fetchElem.classList.remove("fetch-before")
-	fetchElem.classList.add("fetch-after")
-
-	dropElem.addEventListener("mouseenter", dropHover)
-	dropElem.addEventListener("mouseout", dropHoverOut)
-	fetchElem.removeEventListener("mouseenter", fetchHover)
-	fetchElem.removeEventListener("mouseout", fetchHoverOut)
-}
-
-function toggleDrop() {
-	var dropElem = document.getElementsByClassName("drop")[0]
-	var fetchElem = document.getElementsByClassName("fetch")[0]
-
-	document.getElementById("title").style.color = "#24272e"
-	document.getElementById("title").style.float = "left"
-	document.getElementById("title").style.right = "82%"
-}
-
-function toggleFetch() {
-	var dropElem = document.getElementsByClassName("drop")[0]
-	var fetchElem = document.getElementsByClassName("fetch")[0]
-
-	document.getElementById("title").style.transition += ", color 0.5s";
-
-	document.getElementById("title").style.color = "#c4c4c4"
-	document.getElementById("title").style.float = "right"
-	document.getElementById("title").style.right = "1%"
+	var fetchElem = document.getElementById("fetch-pane");
+	var cacheElem = document.getElementById("cache-pane");
+	fetchElem.removeEventListener("mouseover", fetchHover);
+	cacheElem.removeEventListener("mouseover", cacheHover);
+	fetchElem.removeEventListener("mouseenter", fetchPeekIn);
+	fetchElem.removeEventListener("mouseleave", fetchPeekOut);
+	setStyle("fetch-pane", {"background-color":"#1e3466", "color":"#ffffff", "width":"95%"});
+	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"5%"});
+	setStyle("title", {"color":"#ffffff", "left":"81.5%"});
+	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
+	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
+	cacheElem.addEventListener("mouseenter", cachePeekIn);
+	cacheElem.addEventListener("mouseleave", cachePeekOut);
 }
 
 async function main() {
-	document.getElementsByClassName("drop")[0].addEventListener("click", dropClick);
-	document.getElementsByClassName("fetch")[0].addEventListener("click", fetchClick);
+	document.getElementById("cache-pane").addEventListener("mouseover", cacheHover);
+	document.getElementById("fetch-pane").addEventListener("mouseover", fetchHover);
+	document.getElementById("cache-pane").addEventListener("click", cacheClick);
+	document.getElementById("fetch-pane").addEventListener("click", fetchClick);
 }
 
 main()

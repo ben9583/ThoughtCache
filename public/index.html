@@ -3,39 +3,31 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ThoughtCache(Tinder for Thots)</title>
+	<title>ThoughtCache</title>
 
 	<!-- update the version number as needed -->
 	<script defer src="/__/firebase/7.1.0/firebase-app.js"></script>
 	<!-- include only the Firebase features as you need -->
-	<script defer src="/__/firebase/7.1.0/firebase-auth.js"></script>
 	<script defer src="/__/firebase/7.1.0/firebase-database.js"></script>
-	<script defer src="/__/firebase/7.1.0/firebase-messaging.js"></script>
-	<script defer src="/__/firebase/7.1.0/firebase-storage.js"></script>
 	<!-- initialize the SDK after all desired features are loaded -->
 	<script defer src="/__/firebase/init.js"></script>
 	<!-- link to the main css file -->
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<style>
-		/* nothing really should go here (see style.css) */
-	</style>
 </head>
 <body>
-	<div style="width:100%">
-		<div class="drop drop-before" id="drop">
-			<h1 class="drop-text">drop</h1>
-		</div>
-		<div class="fetch" id="fetch">
-			<h1 class="fetch-text">fetch</h1>
-		</div>
-		<h5 id="title">ThoughtCache</h5>
+	<h5 id="title">ThoughtCache</h5>
+	<div id="cache-pane" class="option-pane">
+		<h1 id="cache-heading" class="option-heading">cache</h1>
+	</div>
+	<div id="fetch-pane" class="option-pane">
+		<h1 id="fetch-heading" class="option-heading">fetch</h1>
 	</div>
 	<script src="./js/main.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			try {
 				let app = firebase.app();
-				let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+				let features = ['database'].filter(feature => typeof app[feature] === 'function');
 				console.log("Success");
 			} catch (e) {
 				console.log("Error: " + e);

@@ -1,68 +1,40 @@
 body {
-	background-color: #c4c4c4;
-	margin:0;
-	overflow:hidden;
-}
-h1 {
+  margin: 0;
+	overflow: hidden;
+	background-color: #1e3466;
 	font-family: sans-serif;
-	font-size: 9vw;
-}
-h5 {
-	font-family: sans-serif;
-	font-size: 2.5vw
 }
 #title {
-	margin:0;
-	position:absolute;
-	float: right;
-	right: 51%;
-	transition: right 0.5s;
-	color: #24272e;
-}
-.drop {
-	color: #24272e;
-	background-color: #c4c4c4;
-	width: 50%;
-	height: 100vh;
+	font-size: 2.5vw;
+	color: #ffffff;
+	position: absolute;
 	float: left;
-	transition: background-color 0.5s, width 0.5s;
-	position: relative;
-	top: 0px;
-	left: 0px;
-	z-index: -10;
+	margin-top: 1%;
+	left: 1%;
+	transition: left 0.5s, color 0.5s;
 }
-.fetch {
-	color: #c4c4c4;
-	background-color: #24272e;
+.option-pane {
 	width: 50%;
 	height: 100vh;
-	float: right;
 	transition: background-color 0.5s, width 0.5s;
 }
-.drop-before:hover {
-	background-color:#24272e;
-	color:#c4c4c4;
-}
-.drop:hover ~ #title {
-	color:#c4c4c4;
-}
-.fetch-before:hover {
-	background-color:#24272e;
-	color:#c4c4c4;
-}
-.drop-before:hover ~ .fetch {
-	background-color: #c4c4c4;
-	color: #24272e;
-}
-.drop-text {
+.option-heading {
+	font-size: 9vw;
 	margin:0;
-	text-align:center;
-	padding-top:39vh;
-	padding-bottom:39vh;
+	text-align: center;
+	padding-top: 39vh;
+	padding-bottom: 39vh;
+	z-index: -10;
+	opacity: 1;
+	transition: opacity 0.5s, visibility 0.5s;
 }
-.fetch-text {
-	margin:0;
-	text-align:center;
-	padding-top:39vh;
-	padding-bottom:39vh;
+#cache-pane {
+	color: #ffffff;
+	background-color: #1e3466;
+	float: left;
+}
+#fetch-pane {
+	color: #1e3466;
+	background-color: #ffffff;
+	float: right;
 }
