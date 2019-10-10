@@ -1,54 +1,39 @@
 body {
-	background-color: #c4c4c4;
-}
-h1 {
+	margin: 0;
+	overflow: hidden;
 	font-family: sans-serif;
-	font-size: 9vw;
 }
-h5 {
-	font-family: sans-serif;
-	font-size: 2.5vw
-}
-.drop {
-	color: #000000;
-	background-color: #c4c4c4;
-	width: 50%;
-	height: 100vh;
-	float: left;
-	transition: background-color 0.5s, width 0.5s;
-	position: relative;
-	top: 0px;
-	left: 0px;
-	z-index: -10;
-}
-.fetch {
+#title {
+	font-size: 2.5vw;
 	color: #ffffff;
-	background-color: #24272e;
+	position: absolute;
+	float: left;
+	margin-top: 1%;
+	left: 1%;
+	transition: left 0.5s, color 0.5s;
+}
+.option-pane {
 	width: 50%;
 	height: 100vh;
-	float: right;
 	transition: background-color 0.5s, width 0.5s;
 }
-.drop:hover {
-	background-color:#24272e;
-	color:#ffffff;
+.option-heading {
+	font-size: 9vw;
+	margin:0;
+	text-align: center;
+	padding-top: 39vh;
+	padding-bottom: 39vh;
+	z-index: -10;
+	opacity: 1;
+	transition: opacity 0.5s, visibility 0.5s;
 }
-.drop:hover ~ #title {
-	color:#ffffff;
+#cache-pane {
+	color: #ffffff;
+	background-color: #000000;
+	float: left;
 }
-.fetch:hover {
-	background-color:#24272e;
-	color:#ffffff;
-}
-.drop:hover ~ .fetch {
-	background-color: #c4c4c4;
+#fetch-pane {
 	color: #000000;
+	background-color: #ffffff;
+	float: right;
 }
-.drop:active {
-	width: 100%;
-}
-/*
-.fetch:active {
-	width: 100%;
-}
-*/
