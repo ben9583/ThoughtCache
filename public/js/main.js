@@ -9,15 +9,15 @@ function setStyle(objId, propertyObject) {
 }
 
 function cacheHover() {
-	setStyle("cache-pane", {"background-color":"#000000", "color":"#ffffff"});
-	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#000000"});
+	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff"});
+	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466"});
 	setStyle("title", {"color":"#ffffff"});
 }
 
 function fetchHover() {
-	setStyle("fetch-pane", {"background-color":"#000000", "color":"#ffffff"});
-	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#000000"});
-	setStyle("title", {"color":"#000000"});
+	setStyle("fetch-pane", {"background-color":"#1e3466", "color":"#ffffff"});
+	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466"});
+	setStyle("title", {"color":"#1e3466"});
 }
 
 function cachePeekIn() {
@@ -47,8 +47,8 @@ function cacheClick() {
 	fetchElem.removeEventListener("mouseover", fetchHover);
 	cacheElem.removeEventListener("mouseenter", cachePeekIn);
 	cacheElem.removeEventListener("mouseleave", cachePeekOut);
-	setStyle("cache-pane", {"background-color":"#000000", "color":"#ffffff", "width":"95%"});
-	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#000000", "width":"5%"});
+	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff", "width":"95%"});
+	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"5%"});
 	setStyle("title", {"color":"#ffffff", "left":"1%"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
@@ -63,8 +63,8 @@ function fetchClick() {
 	cacheElem.removeEventListener("mouseover", cacheHover);
 	fetchElem.removeEventListener("mouseenter", fetchPeekIn);
 	fetchElem.removeEventListener("mouseleave", fetchPeekOut);
-	setStyle("fetch-pane", {"background-color":"#000000", "color":"#ffffff", "width":"95%"});
-	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#000000", "width":"5%"});
+	setStyle("fetch-pane", {"background-color":"#1e3466", "color":"#ffffff", "width":"95%"});
+	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"5%"});
 	setStyle("title", {"color":"#ffffff", "left":"81.5%"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
