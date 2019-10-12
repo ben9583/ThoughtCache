@@ -18,13 +18,3 @@ function createThought(msg) {
     "downvotes": 0
   };
 }
-
-function gotData(data) {
-  console.log(data)
-}
-
-function storeThought(thot) {
-  database.ref('messages/' + userId)
-}
-
-console.log(createThought("Test"))
