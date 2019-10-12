@@ -18,3 +18,11 @@ function createThought(msg) {
     "downvotes": 0
   };
 }
+
+function gotData(data) {
+  console.log(data)
+}
+
+function storeThought(m) { 
+  database.ref("messages/" + (m.date)).set(m); 
+}
