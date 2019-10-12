@@ -52,7 +52,8 @@ function cacheClick() {
 	setStyle("title", {"color":"#ffffff", "left":"1%"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
-	setStyle("cache-form", {"opacity":"100", "visibility":"visible", "transition":"visibility 0s, opacity 0.5s"});
+	setStyle("cache-form", {"opacity":"1", "visibility":"visible", "transition":"visibility 0s, opacity 0.5s"});
+	setStyle("cache-text", {"opacity":"1"});
 	fetchElem.addEventListener("mouseenter", fetchPeekIn);
 	fetchElem.addEventListener("mouseleave", fetchPeekOut);
 }
