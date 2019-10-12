@@ -1,6 +1,6 @@
 body {
-  margin: 0;
-	overflow: hidden;
+	margin: 0;
+	/*overflow: hidden;*/
 	background-color: #1e3466;
 	font-family: Helvetica, sans-serif;
 }
@@ -12,6 +12,10 @@ body {
 	margin-top: 1%;
 	left: 1%;
 	transition: left 0.5s, color 0.5s;
+}
+#cache-text {
+	opacity: 0;
+	transition: opacity 1s;
 }
 .option-pane {
 	width: 50%;

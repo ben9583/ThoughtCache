@@ -9,3 +9,22 @@ firebase.initializeApp(config);
 
 // Get a reference to the database service
 var database = firebase.database();
+
+function createThought(msg) {
+  return {
+    "message": msg,
+    "date": (new Date()).getTime(),
+    "upvotes": 0,
+    "downvotes": 0
+  };
+}
+
+function gotData(data) {
+  console.log(data)
+}
+
+function storeThought(thot) {
+  database.ref('messages/' + userId)
+}
+
+console.log(createThought("Test"))
