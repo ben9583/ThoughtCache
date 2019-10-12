@@ -23,8 +23,6 @@ function gotData(data) {
   console.log(data)
 }
 
-function storeThought(thot) {
-  database.ref('messages/' + userId)
+function storeThought(m) { 
+  database.ref("messages/" + (m.date)).set(m); 
 }
-
-console.log(createThought("Test"))

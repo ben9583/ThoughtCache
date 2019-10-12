@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	/*overflow: hidden;*/
+	overflow: hidden;
 	background-color: #1e3466;
 	font-family: Helvetica, sans-serif;
 }
