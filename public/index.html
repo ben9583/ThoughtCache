@@ -5,12 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ThoughtCache</title>
 
-	<!-- update the version number as needed -->
-	<script defer src="/__/firebase/7.5.0/firebase-app.js"></script>
-	<!-- include only the Firebase features as you need -->
-	<script defer src="/__/firebase/7.5.0/firebase-database.js"></script>
-	<!-- initialize the SDK after all desired features are loaded -->
-	<script defer src="/__/firebase/init.js"></script>
 	<!-- link to the main css file -->
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
@@ -23,9 +17,20 @@
 	<div id="fetch-pane" class="option-pane">
 		<h1 id="fetch-heading" class="option-heading">fetch</h1>
 	</div>
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
 	<script src="./js/main.js"></script>
 	<script src="./js/database.js"></script>
 	<script src="https://thoughtcache.firebaseio.com/.json?callback=gotData&shallow=true"></script>
+
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			try {
