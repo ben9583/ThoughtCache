@@ -2,7 +2,8 @@ body {
 	margin: 0;
 	overflow: hidden;
 	background-color: #1e3466;
-	font-family: Helvetica, sans-serif;
+	font-family: sans-serif;
+	transition: 0.5s;
 }
 #title {
 	font-size: 2.5vw;
@@ -12,12 +13,14 @@ body {
 	margin-top: 1%;
 	left: 1%;
 	transition: left 0.5s, color 0.5s;
+	z-index: 10;
 }
 #cache-text {
 	opacity: 0;
 	transition: opacity 1s;
 }
 .option-pane {
+	position: relative;
 	width: 50%;
 	height: 100vh;
 	transition: background-color 0.5s, width 0.5s;
@@ -30,7 +33,7 @@ body {
 	padding-bottom: 39vh;
 	z-index: -10;
 	opacity: 1;
-	transition: opacity 0.5s, visibility 0.5s;
+	transition: opacity 0.5s, visibility 0.5s, display 0.5s;
 }
 #cache-pane {
 	color: #ffffff;
@@ -41,4 +44,52 @@ body {
 	color: #1e3466;
 	background-color: #ffffff;
 	float: right;
+}
+form {
+	position: absolute;
+	top: 15vh;
+	bottom: 10vh;
+	left: 10%;
+	right: 15%;
+	width: 75%;
+	height: 70%;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 10;
+}
+textarea {
+	width: 100%;
+	height: 95%;
+	padding: 20px;
+	font-size: 2vw;
+	font-family: sans-serif;
+	color: #ffffff;
+	border: 5px solid #ffffff;
+	background-color: #1e3466;
+	box-sizing: border-box;
+	resize: none;
+}
+::placeholder {
+	color: #aaaaaa;
+	opacity: 1;
+}
+  
+:-ms-input-placeholder {
+	color: #aaaaaa;
+}
+  
+::-ms-input-placeholder {
+	color: #aaaaaa;
+}
+input[type=submit] {
+	font-size: 2vw;
+	color: #ffffff;
+	padding: 10px;
+	border: 5px solid #ffffff;
+	background-color: #1e3466;
+	float: right;
+}
+input[type=submit]:hover {
+	background-color: #ffffff;
+	color: #1e3466;
 }
