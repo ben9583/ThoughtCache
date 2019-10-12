@@ -38,3 +38,17 @@ body {
 	background-color: #ffffff;
 	float: right;
 }
+#cache-form {
+	/* visibility: hidden;
+	opacity: 0; */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 75%;
+	height: 75%;
+	z-index: 10;
+}
+#thought-text {
+	width: 100%;
+	height: 100%;
+}
