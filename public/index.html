@@ -3,45 +3,44 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ThoughtCache(Tinder for Thots)</title>
+	<title>ThoughtCache</title>
 
-	<!-- update the version number as needed -->
-	<script defer src="/__/firebase/7.1.0/firebase-app.js"></script>
-	<!-- include only the Firebase features as you need -->
-	<script defer src="/__/firebase/7.1.0/firebase-auth.js"></script>
-	<script defer src="/__/firebase/7.1.0/firebase-database.js"></script>
-	<script defer src="/__/firebase/7.1.0/firebase-messaging.js"></script>
-	<script defer src="/__/firebase/7.1.0/firebase-storage.js"></script>
-	<!-- initialize the SDK after all desired features are loaded -->
-	<script defer src="/__/firebase/init.js"></script>
 	<!-- link to the main css file -->
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
-	<style>
-		/* nothing really should go here (see style.css) */
-	</style>
 </head>
-<body style="margin:0;overflow:hidden">
-	<div class="drop" id="drop">
-		<h1 style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">drop</h1>
+<body>
+	<h5 id="title">ThoughtCache</h5>
+	<div id="cache-pane" class="option-pane">
+		<h1 id="cache-heading" class="option-heading">cache</h1>
+		<input id="cache-text" type="text" />
 	</div>
-	<div class="fetch" id="fetch">
-		<h1 style="margin:0;text-align:center;padding-top:39vh;padding-bottom:39vh;">fetch</h1>
+	<div id="fetch-pane" class="option-pane">
+		<h1 id="fetch-heading" class="option-heading">fetch</h1>
 	</div>
-	<h5 id="title" style="margin:0;margin-left:10px;position:absolute">ThoughtCache</h5>
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
 	<script src="./js/main.js"></script>
+	<script src="./js/database.js"></script>
+	<script src="https://thoughtcache.firebaseio.com/.json?callback=gotData&shallow=true"></script>
+
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			try {
 				let app = firebase.app();
-				let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+				let features = ['database'].filter(feature => typeof app[feature] === 'function');
 				console.log("Success");
 			} catch (e) {
 				console.log("Error: " + e);
 			}
 		});
 	</script>
-
-
-
 </body>
 </html>
