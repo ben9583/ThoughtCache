@@ -49,7 +49,7 @@ function cacheClick() {
 	cacheElem.removeEventListener("mouseleave", cachePeekOut);
 	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff", "width":"95%"});
 	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"5%"});
-	setStyle("title", {"color":"#ffffff", "left":"1%"});
+	setStyle("title", {"color":"#ffffff", "left":"1.5%"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-form", {"opacity":"1", "visibility":"visible", "transition":"visibility 0s, opacity 0.5s"});
@@ -67,7 +67,7 @@ function fetchClick() {
 	fetchElem.removeEventListener("mouseleave", fetchPeekOut);
 	setStyle("fetch-pane", {"background-color":"#1e3466", "color":"#ffffff", "width":"95%"});
 	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"5%"});
-	setStyle("title", {"color":"#ffffff", "left":"81.5%"});
+	setStyle("title", {"color":"#ffffff", "left":"78.5%"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-form", {"opacity":"0", "visibility":"hidden", "transition":"visibility 0.5s, opacity 0.5s"});
