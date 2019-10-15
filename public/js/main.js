@@ -12,32 +12,48 @@ function cacheHover() {
 	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff"});
 	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466"});
 	setStyle("title", {"color":"#ffffff"});
+	setStyle("info", {"color":"#1e3466"});
 }
 
 function fetchHover() {
 	setStyle("fetch-pane", {"background-color":"#1e3466", "color":"#ffffff"});
 	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466"});
 	setStyle("title", {"color":"#1e3466"});
+	setStyle("info", {"color":"#ffffff"});
+}
+
+function infoHover() {
+	setStyle("info", {"color":"#2a55a3"});
+}
+
+function infoPeekIn() {
+	setStyle("cache-pane", {"width":"6%"});
+	setStyle("fetch-pane", {"width":"94%"});
+	setStyle("info", {"opacity":"0", "visibility":"hidden"});
 }
 
 function cachePeekIn() {
 	setStyle("cache-pane", {"width":"6%"});
 	setStyle("fetch-pane", {"width":"94%"});
+	setStyle("info", {"opacity":"0", "visibility":"hidden"});
 }
 
 function cachePeekOut() {
 	setStyle("cache-pane", {"width":"5%"});
 	setStyle("fetch-pane", {"width":"95%"});
+	setStyle("info", {"opacity":"0", "visibility":"hidden"});
 }
 
 function fetchPeekIn() {
 	setStyle("fetch-pane", {"width":"6%"});
 	setStyle("cache-pane", {"width":"94%"});
+	setStyle("info", {"opacity":"0", "visibility":"hidden"});
 }
 
 function fetchPeekOut() {
 	setStyle("fetch-pane", {"width":"5%"});
 	setStyle("cache-pane", {"width":"95%"});
+	setStyle("info", {"opacity":"0", "visibility":"hidden"});
 }
 
 function cacheClick() {
@@ -75,9 +91,21 @@ function fetchClick() {
 	cacheElem.addEventListener("mouseleave", cachePeekOut);
 }
 
+function infoClick() {
+	var infoElem = document.getElementById("info");
+	infoElem.removeEventListener("mouseover", infoHover);
+	infoElem.removeEventListener("mouseenter", infoClick);
+	setStyle("cache-pane", {"visibility":"hidden"});
+	setStyle("fetch-pane", {"visibility":"hidden"});
+	setStyle("title", {"visibility":"hidden"});
+	setStyle("info-pane", {"visibility":"visible"});
+}
+
 async function main() {
 	document.getElementById("cache-pane").addEventListener("mouseover", cacheHover);
 	document.getElementById("fetch-pane").addEventListener("mouseover", fetchHover);
+	document.getElementById("info").addEventListener("mouseover", infoHover);
+	document.getElementById("info").addEventListener("click", infoClick);
 	document.getElementById("cache-pane").addEventListener("click", cacheClick);
 	document.getElementById("fetch-pane").addEventListener("click", fetchClick);
 }
