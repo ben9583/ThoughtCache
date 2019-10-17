@@ -68,7 +68,7 @@ function cacheClick() {
 	setStyle("title", {"color":"#ffffff", "left":"1.5%"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
-	setStyle("cache-form", {"opacity":"1", "visibility":"visible", "transition":"visibility 0s, opacity 0.5s"});
+	setStyle("cache-form", {"opacity":"1", "visibility":"visible", "transition":"opacity 0.5s"});
 	setStyle("cache-text", {"opacity":"1"});
 	fetchElem.addEventListener("mouseenter", fetchPeekIn);
 	fetchElem.addEventListener("mouseleave", fetchPeekOut);
@@ -86,7 +86,7 @@ function fetchClick() {
 	setStyle("title", {"color":"#ffffff", "left":"78.5%"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
-	setStyle("cache-form", {"opacity":"0", "visibility":"hidden", "transition":"visibility 0.5s, opacity 0.5s"});
+	setStyle("cache-form", {"opacity":"0", "visibility":"hidden", "transition":"opacity 0.5s"});
 	cacheElem.addEventListener("mouseenter", cachePeekIn);
 	cacheElem.addEventListener("mouseleave", cachePeekOut);
 }
