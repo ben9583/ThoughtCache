@@ -2,10 +2,13 @@ language: node_js
 node_js:
   - "8"
 script:
- - echo "Deploy!!"
+  - echo "Deploy!!"
+branches:
+  only: 
+    - master
 install:
   - |
-    if [ $TRAVIS_BRANCH != "master" ]; then
+    if [ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH != "master" ]; then
       travis_terminate 0;
     fi
   - npm install -g firebase-tools
@@ -14,6 +17,6 @@ install:
   - cd ..
 after_success:
   - |
-    if [ $TRAVIS_BRANCH == "master" ]; then
+    if [ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH == "master" ]; then
       firebase deploy --project thoughtcache --token $FIREBASE_TOKEN;
     fi
