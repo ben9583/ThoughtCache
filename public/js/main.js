@@ -97,7 +97,7 @@ function fetchClick() {
 	fetchElem.removeEventListener("mouseleave", fetchPeekOut);
 	setStyle("fetch-pane", {"color":"#ffffff", "background-color":"#1e3466", "width":"93%"});
 	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"7%"});
-	setStyle("title", {"color":"#ffffff", "left":"(100% - 10em)"});
+	setStyle("title", {"color":"#ffffff", "left":"calc(100% - 10em)"});
 	setStyle("info", {"color":"#1e3466", "background-color": "#ffffff"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
