@@ -8,7 +8,7 @@ branches:
     - master
 install:
   - |
-    if [ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH != "master" ]; then
+    if [ $TRAVIS_EVENT_TYPE != "push" || $TRAVIS_BRANCH != "master" ]; then
       travis_terminate 0;
     fi
   - npm install -g firebase-tools
