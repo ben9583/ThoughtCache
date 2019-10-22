@@ -51,6 +51,39 @@ div.qCircle {
 	transition: opacity 1s;
 	overflow: hidden;
 }
+#guide
+{
+	color: #1e3466;
+	padding: 20px;
+	padding-bottom: 0px;
+	font-size: 4vw;
+	font-family: 'Roboto', sans-serif;
+}
+#guide-text
+{
+	padding: 40px;
+	padding-top: 0px;
+	font-size: 2vw;
+}
+.col
+{
+	float: left;
+	width: 46%;
+	height: 400px;
+	margin: 20px;
+	background-color: #1e3466;
+}
+.col-text {
+	color: white;
+	text-align: center;
+	font-weight: 700;
+	font-size: 5vw;
+	margin-top: 2px;
+}
+.col-ntext {
+	color: white;
+	padding: 20px;
+}
 .option-pane {
 	position: relative;
 	width: 50%;
@@ -65,17 +98,17 @@ div.qCircle {
 	height: 100%;
 }
 #info-pane {
-	background-color: #00ff00;
-	top: -40em;
+	background-color: #a3a3a3;
+	top: -51em;
 	transition: top 0.5s;
 }
+
 .option-heading {
 	font-size: 9vw;
 	margin:0;
 	text-align: center;
 	padding-top: 39vh;
 	padding-bottom: 39vh;
-	/*z-index: -10;*/
 	opacity: 1;
 	-webkit-transition: opacity 0.5s;
 	transition: opacity 0.5s;
