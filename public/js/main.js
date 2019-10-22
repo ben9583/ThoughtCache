@@ -40,31 +40,26 @@ function infoHoverOut() {
 function infoPeekIn() {
 	setStyle("cache-pane", {"width":"7%"});
 	setStyle("fetch-pane", {"width":"93%"});
-	
 }
 
 function cachePeekIn() {
 	setStyle("cache-pane", {"width":"8%"});
 	setStyle("fetch-pane", {"width":"92%"});
-	
 }
 
 function cachePeekOut() {
 	setStyle("cache-pane", {"width":"7%"});
 	setStyle("fetch-pane", {"width":"93%"});
-	
 }
 
 function fetchPeekIn() {
 	setStyle("fetch-pane", {"width":"8%"});
 	setStyle("cache-pane", {"width":"92%"});
-	
 }
 
 function fetchPeekOut() {
 	setStyle("fetch-pane", {"width":"7%"});
 	setStyle("cache-pane", {"width":"93%"});
-
 }
 
 function cacheClick() {
