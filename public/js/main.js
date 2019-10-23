@@ -122,7 +122,7 @@ function infoClick() {
 }
 
 function main() {
-	console.log("V0.41")
+	console.log("V0.42")
 
 	document.getElementById("cache-pane").addEventListener("mouseover", cacheHover);
 	document.getElementById("fetch-pane").addEventListener("mouseover", fetchHover);
