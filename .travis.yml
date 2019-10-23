@@ -16,8 +16,8 @@ install:
   - cd public/js
   - touch mainX.js
   - touch databaseX.js
-  - uglifyjs --compress --mangle -- main.js -o mainX.js
-  - uglifyjs --compress --mangle -- database.js -o databaseX.js
+  - uglifyjs --compress --mangle -o mainX.js -- main.js
+  - uglifyjs --compress --mangle -o databaseX.js -- database.js
   - rm -rf main.js
   - rm -rf database.js
   - mv mainX.js main.js
