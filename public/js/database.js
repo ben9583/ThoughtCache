@@ -12,6 +12,7 @@ var database = firebase.database();
 var gt = (new Date()).getTime() - Math.pow(10, 4)
 var rec
 var keywords = [
+	"Thought is too long, maximum 200 characters",
 	"Thought is too short, minimum 4 characters",
 	"You're doing that too quickly; please wait about a minute after posting."
 ]
