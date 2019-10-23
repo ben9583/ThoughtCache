@@ -7,10 +7,12 @@ script:
   - touch databaseX.js
   - uglifyjs --compress --mangle -o mainX.js -- main.js
   - uglifyjs --compress --mangle -o databaseX.js -- database.js
+  - cat mainX.js
   - rm -rf main.js
   - rm -rf database.js
   - mv mainX.js main.js
   - mv databaseX.js database.js
+  - cat main.js
   - echo "Deploy!!"
 install:
   - |
