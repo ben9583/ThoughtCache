@@ -51,6 +51,35 @@ div.qCircle {
 	transition: opacity 1s;
 	overflow: hidden;
 }
+<<<<<<< Updated upstream
+=======
+#guide-text
+{
+	padding: 40px;
+	padding-top: 0px;
+	font-size: 2em;
+	line-height: 1.5em;
+}
+.col
+{
+	float: left;
+	width: 46%;
+	height: 400px;
+	margin: 20px;
+	background-color: #1e3466;
+}
+.col-text {
+	color: white;
+	text-align: center;
+	font-weight: 700;
+	font-size: 5vw;
+	margin-top: 2px;
+}
+.col-ntext {
+	color: white;
+	padding: 20px;
+}
+>>>>>>> Stashed changes
 .option-pane {
 	position: relative;
 	width: 50%;

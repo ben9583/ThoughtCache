@@ -2,7 +2,8 @@ var windowToggle = 0
 var infoToggle = false
 
 function sleep(ms) {
-	return new Promise(resolve => setTimeout(resolve, ms));
+	setTimeout(function() { return; }, ms);
+	return
 }
 
 function setStyle(objId, propertyObject) {
@@ -128,7 +129,7 @@ function infoClick() {
 	}
 }
 
-async function main() {
+function main() {
 	document.getElementById("cache-pane").addEventListener("mouseover", cacheHover);
 	document.getElementById("fetch-pane").addEventListener("mouseover", fetchHover);
 	document.getElementById("info").addEventListener("mouseover", infoHover);
@@ -138,4 +139,4 @@ async function main() {
 	document.getElementById("fetch-pane").addEventListener("click", fetchClick);
 }
 
-main()
+main();
