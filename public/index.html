@@ -7,6 +7,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="./css/roboto.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script src="./js/other_data.js"></script>
 </head>
 <body>
 	<div id="info" class="qCircle"><p>?</p></div>
@@ -14,8 +15,9 @@
 	<div id="cache-pane" class="option-pane">
 		<h1 id="cache-heading" class="option-heading">CACHE</h1>
 		<div id="cache-form">
+			<input type="hidden" value="" id="info-val" />
 			<textarea id="cache-text" name="thought" placeholder="Cache your thoughts"></textarea>
-			<input id="cache-submit" type="submit" value="Cache">
+			<input id="cache-submit" type="submit" value="Cache" />
 			<p id="error-text"></p>
 		</div>
 	</div>
