@@ -51,8 +51,6 @@ div.qCircle {
 	transition: opacity 1s;
 	overflow: hidden;
 }
-<<<<<<< Updated upstream
-=======
 #guide-text
 {
 	padding: 40px;
@@ -79,7 +77,6 @@ div.qCircle {
 	color: white;
 	padding: 20px;
 }
->>>>>>> Stashed changes
 .option-pane {
 	position: relative;
 	width: 50%;
@@ -94,17 +91,17 @@ div.qCircle {
 	height: 100%;
 }
 #info-pane {
-	background-color: #00ff00;
-	top: -40em;
+	background-color: #a3a3a3;
+	top: -51em;
 	transition: top 0.5s;
 }
+
 .option-heading {
 	font-size: 9vw;
 	margin:0;
 	text-align: center;
 	padding-top: 39vh;
 	padding-bottom: 39vh;
-	/*z-index: -10;*/
 	opacity: 1;
 	-webkit-transition: opacity 0.5s;
 	transition: opacity 0.5s;

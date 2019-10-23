@@ -41,31 +41,26 @@ function infoHoverOut() {
 function infoPeekIn() {
 	setStyle("cache-pane", {"width":"7%"});
 	setStyle("fetch-pane", {"width":"93%"});
-	/* setStyle("info", {"opacity":"0", "visibility":"hidden"}); */
 }
 
 function cachePeekIn() {
 	setStyle("cache-pane", {"width":"8%"});
 	setStyle("fetch-pane", {"width":"92%"});
-	/* setStyle("info", {"opacity":"0", "visibility":"hidden"}); */
 }
 
 function cachePeekOut() {
 	setStyle("cache-pane", {"width":"7%"});
 	setStyle("fetch-pane", {"width":"93%"});
-	/* setStyle("info", {"opacity":"0", "visibility":"hidden"}); */
 }
 
 function fetchPeekIn() {
 	setStyle("fetch-pane", {"width":"8%"});
 	setStyle("cache-pane", {"width":"92%"});
-	/* setStyle("info", {"opacity":"0", "visibility":"hidden"}); */
 }
 
 function fetchPeekOut() {
 	setStyle("fetch-pane", {"width":"7%"});
 	setStyle("cache-pane", {"width":"93%"});
-	/* setStyle("info", {"opacity":"0", "visibility":"hidden"}); */
 }
 
 function cacheClick() {
@@ -114,9 +109,6 @@ function infoClick() {
 		infoToggle = true
 		document.getElementById("cache-pane").removeEventListener("click", cacheClick);
 		document.getElementById("fetch-pane").removeEventListener("click", fetchClick);
-		//setStyle("cache-pane", {"visibility":"hidden"});
-		//setStyle("fetch-pane", {"visibility":"hidden"});
-		//setStyle("title", {"visibility":"hidden"});
 		setStyle("info-pane", {"top":"0"})
 	} else {
 		infoToggle = false
@@ -125,7 +117,7 @@ function infoClick() {
 		setStyle("cache-pane", {"visibility":"visible"});
 		setStyle("fetch-pane", {"visibility":"visible"});
 		setStyle("title", {"visibility":"visible"});
-		setStyle("info-pane", {"top":"-40em"})
+		setStyle("info-pane", {"top":"-51em"})
 	}
 }
 
