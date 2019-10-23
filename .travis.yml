@@ -14,8 +14,8 @@ install:
   - cd ..
   - npm install uglify-js -g
   - cd public/js
-  - uglifyjs --compree --mangle -- main.js -o mainX.js
-  - uglifyjs --compree --mangle -- database.js -o databaseX.js
+  - uglifyjs --compress --mangle -- main.js -o mainX.js
+  - uglifyjs --compress --mangle -- database.js -o databaseX.js
   - rm -rf main.js
   - rm -rf database.js
   - mv mainX.js main.js
