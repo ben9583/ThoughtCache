@@ -55,7 +55,8 @@ div.qCircle {
 {
 	padding: 40px;
 	padding-top: 0px;
-	font-size: 2vw;
+	font-size: 2em;
+	line-height: 1.5em;
 }
 .col
 {

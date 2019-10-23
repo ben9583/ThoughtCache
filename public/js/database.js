@@ -11,26 +11,31 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var gt = (new Date()).getTime() - Math.pow(10, 4)
 var rec
+var keywords = [
+	"Thought is too long, maximum 200 characters",
+	"Thought is too short, minimum 4 characters",
+	"You're doing that too quickly; please wait about a minute after posting."
+]
 
-function gotData(data) {
+function gotData(data) { // obtained data from server
 	console.log(data);
 	rec = ""
 }
 
-function thoughtSuccess(m) {
+function thoughtSuccess(m) { // yay something good happened
 	var errorElem = document.getElementById("error-text")
 	errorElem.innerHTML = m
 	errorElem.style.color = "#99ff99"
 }
 
-function thoughtError(n, e) {
+function thoughtError(n, e) { // whoops something bad happened
 	var errorElem = document.getElementById("error-text")
 	errorElem.innerHTML = e
 	errorElem.style.color = "#ff9999"
 }
 
 
-function httpGetAsync(theUrl, callbackSuccess, callbackError) {
+function xmlTrans(theUrl, callbackSuccess, callbackError) { // Sends http request
 	var tt = (new Date()).getTime()
 	if(tt - Math.pow(10, 4) > gt) {
 		var xmlHttp = new XMLHttpRequest();
@@ -49,14 +54,14 @@ function httpGetAsync(theUrl, callbackSuccess, callbackError) {
 	}
 }
 
-function setCookie(cname, cvalue, exseconds) {
+function asnPermValue(cname, cvalue, exseconds) { // Assign cookie value
 	var d = new Date();
 	d.setTime(d.getTime() + (exseconds*1000));
 	var expires = "expires="+ d.toUTCString();
 	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-function getCookie(cname) {
+function getCookie(cname) { // Get cookie value
 	var name = cname + "=";
 	var decodedCookie = decodeURIComponent(document.cookie);
 	var ca = decodedCookie.split(';');
@@ -79,19 +84,19 @@ document.getElementById("cache-submit").addEventListener("mousedown", function()
 	errorElem.style.visibility = "visible"
 	var text = document.getElementById("cache-text").value
 	console.log(text.length)
-	if(text.length > 200) {
-		errorElem.innerHTML = "Thought is too long, maximum 200 characters (" + text.length + ")."
+	if(text.length > 200) { // Too long
+		errorElem.innerHTML = keywords[0] + " (" + text.length + ")."
 		errorElem.style.color = "#ff9999"
 		return
-	} else if(text.length < 4) {
-		errorElem.innerHTML = "Thought is too short, minimum 4 characters (" + text.length + ")."
+	} else if(text.length < 4) { // Too short
+		errorElem.innerHTML = keywords[1] + " (" + text.length + ")."
 		errorElem.style.color = "#ff9999"
 		return
-	} else if(getCookie("xdata") == rec) {
-		setCookie("xdata", text, 60)
-		httpGetAsync(("https://us-central1-thoughtcache.cloudfunctions.net/submitThought?message=" + text), thoughtSuccess, thoughtError)
-	} else {
-		errorElem.innerHTML = "You're doing that too quickly; please wait about a minute after posting."
+	} else if(getCookie("xdata") == rec) { // All good
+		asnPermValue("xdata", text, 60)
+		xmlTrans(("https://us-central1-thoughtcache.cloudfunctions.net/submitThought?message=" + text), thoughtSuccess, thoughtError)
+	} else { // Too frequent
+		errorElem.innerHTML = keywords[2]
 		errorElem.style.color = "#ff9999"
 	}
 });
