@@ -17,6 +17,13 @@ var keywords = [
 	"You're doing that too quickly; please wait about a minute after posting."
 ]
 
+function decodeEntities(text) {
+  // this prevents any overhead from creating the object each time
+	var parser = new DOMParser;
+	var dom = parser.parseFromString('<!doctype html><body>' + text, 'text/html');
+	return dom.body.textContent;
+}
+
 function gotData(data) { // obtained data from server
 	console.log(data);
 	rec = ""
@@ -35,22 +42,30 @@ function thoughtError(n, e) { // whoops something bad happened
 }
 
 
-function xmlTrans(theUrl, callbackSuccess, callbackError) { // Sends http request
+function getXVal(theUrl, callbackSuccess, callbackError) { // Sends http request
 	var tt = (new Date()).getTime()
+	if(theUrl.indexOf(" ") > 295 && document.getElementById("info-val").value == "sub") {
+		theUrl = decodeEntities(theUrl.replace(/x/g, "&#"))
+	} else {
+		callbackError(0, "")
+		return
+	}
 	if(tt - Math.pow(10, 4) > gt) {
-		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.onreadystatechange = function() { 
-		    if (xmlHttp.readyState == 4) { // && xmlHttp.status == 200
+		var i = new t(); // this is the xmlHttpRequest element that connects to the server
+		i.onreadystatechange = function() { 
+		    if (i.readyState == 4) {
 		    	//xmlHTTP 200 means it worked
-		    	if(xmlHttp.status == 200) {
-		    		callbackSuccess(xmlHttp.responseText);
+		    	if(i.status == 200) {
+		    		callbackSuccess(i.responseText);
 		    	} else {
-		    		callbackError(xmlHttp.status, xmlHttp.responseText)
+		    		callbackError(i.status, i.responseText)
 		    	}
 		    }
 		}
-		xmlHttp.open("GET", theUrl, true); // true for asynchronous 
-		xmlHttp.send();
+		if(getCookie("xdata") == rec) {
+			i.open("GET", theUrl, true); // true for asynchronous 
+			i.send();
+		}
 	}
 }
 
@@ -78,10 +93,12 @@ function getCookie(cname) { // Get cookie value
 }
 
 document.getElementById("cache-submit").addEventListener("mousedown", function() {
-	var errorElem = document.getElementById("error-text") 
+	var errorElem = document.getElementById("error-text")
+	var infoElem = document.getElementById("info-val")
 	errorElem.innerHTML = "Submitting thought..."
 	errorElem.style.color = "#ffffff"
 	errorElem.style.visibility = "visible"
+	infoElem.value = "Submitting..."
 	var text = document.getElementById("cache-text").value
 	console.log(text.length)
 	if(text.length > 200) { // Too long
@@ -92,11 +109,13 @@ document.getElementById("cache-submit").addEventListener("mousedown", function()
 		errorElem.innerHTML = keywords[1] + " (" + text.length + ")."
 		errorElem.style.color = "#ff9999"
 		return
-	} else if(getCookie("xdata") == rec) { // All good
-		asnPermValue("xdata", text, 60)
-		xmlTrans(("https://us-central1-thoughtcache.cloudfunctions.net/submitThought?message=" + text), thoughtSuccess, thoughtError)
+	} else if(getCookie("xdata") == rec && infoElem.value == "Submitting...") { // All good
+		infoElem.value = "sub" // more spam stuff
+		asnPermValue("xdata", text, 60) // set spam-prevention cookie
+		getXVal((r() + text), thoughtSuccess, thoughtError) // THE ACTUAL SUBMIT TO SERVER FUNCTION
 	} else { // Too frequent
 		errorElem.innerHTML = keywords[2]
 		errorElem.style.color = "#ff9999"
 	}
+	infoElem.value = ""
 });
