@@ -24,21 +24,15 @@
 	<div id="fetch-pane" class="option-pane">
 		<h1 id="fetch-heading" class="option-heading">FETCH</h1>
 	</div>
-	<div id="info-pane" class="info-expandable">
-		<br />
-		<br />
-		<br />
-		<p id="guide-text">ThoughtCache is a website application that allows users to anonymously cache random thoughts to share with others. A thought is erased after a week of being posted. You are able to upvote thoughts you like or downvote ones that you don't. There is no limit to how many posts you can make, but you can only post once every minute.</p>
-		<!--
-			<div class="col">
-				<p class="col-text">CACHE</p>
-				<p class="col-ntext">Submit your thoughts. [Insert better image]</p>
-			</div>
-			<div class="col">
-				<p class="col-text">FETCH</p>
-				<p class="col-ntext">Read other thoughts, save entries, and vote. TEST [Insert better image]</p>
-			</div>
-		-->
+	<div id="info-pane">
+		<div id="info-text">
+			<p><strong>ThoughtCache</strong> allows you to anonymously share your interesting, insightful, or quirky thoughts with others.</p>
+			<ul>
+				<li><strong>CACHE</strong> allows you to submit a thought.</li>
+				<li><strong>FETCH</strong> allows you to see the thoughts everyone has submitted, as well as upvote the thoughts you like and downvote the ones you don't like.</li>
+			</ul>
+			<p>You can post a maximum of one thought per minute, and all thoughts are purged after a week.</p>
+		</div>
 	</div>
 	
 	
@@ -49,9 +43,9 @@
 	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
 
 	<!-- Add Firebase products that you want to use -->
-	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+	<!-- <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script> -->
 	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+	<!-- <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script> -->
 	<script src="./js/main.js"></script>
 	<script src="./js/database.js"></script>
 	<script src="https://thoughtcache.firebaseio.com/messages.json?callback=gotData&shallow=true"></script>

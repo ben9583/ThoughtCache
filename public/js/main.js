@@ -16,25 +16,30 @@ function cacheHover() {
 	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff"});
 	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466"});
 	setStyle("title", {"color":"#ffffff"});
-	setStyle("info", {"color":"#ffffff", "background-color": "#1e3466"});
+	setStyle("info", {"color":"#1e3466", "background-color": "#ffffff", "border":"4px solid #1e3466"});
 }
 
 function fetchHover() {
 	setStyle("fetch-pane", {"background-color":"#1e3466", "color":"#ffffff"});
 	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466"});
 	setStyle("title", {"color":"#1e3466"});
-	setStyle("info", {"color":"#1e3466", "background-color": "#ffffff"});
+	setStyle("info", {"color":"#ffffff", "background-color": "#1e3466", "border":"4px solid #ffffff"});
 }
 
 function infoHover() {
-	setStyle("info", {"background-color":"#092831", "color":"#ffffff"});
+	if (infoToggle) {
+		setStyle("info", {"background-color":"#1e3466", "color":"#ffffff", "border":"4px solid #1e3466"})
+	} else {
+		setStyle("info", {"background-color":"#ffffff", "color":"#1e3466", "border":"4px solid #ffffff"});
+	}
 }
 
 function infoHoverOut() {
-	if(windowToggle == 1) {
-		setStyle("info", {"background-color":"#1e3466", "color":"#ffffff"});
-	} else {
-		setStyle("info", {"background-color":"#ffffff", "color":"#1e3466"});
+	// if(windowToggle == 1) {
+	// 	setStyle("info", {"background-color":"#1e3466", "color":"#ffffff"});
+	// } else {
+	if (infoToggle) {
+		setStyle("info", {"background-color":"#ffffff", "color":"#1e3466", "border":"4px solid #1e3466"});
 	}
 }
 
@@ -74,7 +79,7 @@ function cacheClick() {
 	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff", "width":"93%"});
 	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"7%"});
 	setStyle("title", {"color":"#ffffff", "left":"1.5%"});
-	setStyle("info", {"color":"#ffffff", "background-color": "#1e3466"});
+	setStyle("info", {"visibility":"hidden", "opacity":"0"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-text", {"opacity":"1"});
@@ -93,8 +98,8 @@ function fetchClick() {
 	fetchElem.removeEventListener("mouseleave", fetchPeekOut);
 	setStyle("fetch-pane", {"color":"#ffffff", "background-color":"#1e3466", "width":"93%"});
 	setStyle("cache-pane", {"background-color":"#ffffff", "color":"#1e3466", "width":"7%"});
-	setStyle("title", {"color":"#ffffff", "left":"calc(100% - 10em)"});
-	setStyle("info", {"color":"#1e3466", "background-color": "#ffffff"});
+	setStyle("title", {"color":"#ffffff", "left":"calc(100% - 44vh)"});
+	setStyle("info", {"visibility":"hidden", "opacity":"0"});
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-text", {"opacity":"0"});
@@ -110,6 +115,7 @@ function infoClick() {
 		document.getElementById("cache-pane").removeEventListener("click", cacheClick);
 		document.getElementById("fetch-pane").removeEventListener("click", fetchClick);
 		setStyle("info-pane", {"top":"0"})
+		setStyle("info", {"color":"#1e3466", "background-color":"#ffffff", "border":"4px solid #1e3466"});
 	} else {
 		infoToggle = false
 		document.getElementById("cache-pane").addEventListener("click", cacheClick);
@@ -118,6 +124,7 @@ function infoClick() {
 		setStyle("fetch-pane", {"visibility":"visible"});
 		setStyle("title", {"visibility":"visible"});
 		setStyle("info-pane", {"top":"-51em"})
+		setStyle("info", {"color":"#ffffff", "background-color":"#1e3466", "border":"4px solid #ffffff"})
 	}
 }
 
