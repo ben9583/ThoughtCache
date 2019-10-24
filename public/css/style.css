@@ -6,7 +6,7 @@ body {
 }
 
 #info {
-	color: #ffffff;
+	color: #1e3466;
 	float: right;
 	z-index: 3;
 	font-size: 10vh;
@@ -14,10 +14,11 @@ body {
 	right: 1vw;
 	top: 0vw;
 	margin: 1.5vw 0.3vw;
-	background-color: #1e3466;
+	background-color: #ffffff;
+	border: 4px solid #1e3466;
 	border-radius: 100%;
-	-webkit-transition: color 0.25s, background-color 0.25s, right 0.5s;
-	transition: color 0.25s, background-color 0.25s, right 0.5s;
+	-webkit-transition: border 0.25s, color 0.25s, background-color 0.25s, right 0.5s, visibility 0.5s, opacity 0.5s;
+	transition: border 0.25s, color 0.25s, background-color 0.25s, right 0.5s, visibility 0.5s, opacity 0.5s;
 }
 
 div#info > p {
@@ -51,13 +52,6 @@ div.qCircle {
 	transition: opacity 1s;
 	overflow: hidden;
 }
-#guide-text
-{
-	padding: 40px;
-	padding-top: 0px;
-	font-size: 2em;
-	line-height: 1.5em;
-}
 .col
 {
 	float: left;
@@ -84,18 +78,23 @@ div.qCircle {
 	-webkit-transition: background-color 0.5s, width 0.5s;
 	transition: background-color 0.5s, width 0.5s;
 }
-.info-expandable {
+#info-pane {
+	background-color: #ffffff;
+	top: -51em;
+	transition: top 0.5s;
 	position: absolute;
 	z-index:2;
 	width: 100%;
 	height: 100%;
 }
-#info-pane {
-	background-color: #a3a3a3;
-	top: -51em;
-	transition: top 0.5s;
+#info-text {
+	margin-top: 15vh;
 }
-
+#info-text > p, ul{
+	margin-left: 15vh;
+	margin-right: 15vh;
+	font-size: 2em;
+}
 .option-heading {
 	font-size: 9vw;
 	margin:0;
@@ -138,7 +137,7 @@ textarea {
 	width: 100%;
 	height: 95%;
 	padding: 20px;
-	font-size: 2.5em;
+	font-size: 2em;
 	font-family: 'Roboto', sans-serif;
 	color: #ffffff;
 	border: 5px solid #ffffff;
