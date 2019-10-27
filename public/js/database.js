@@ -25,7 +25,7 @@ function decodeEntities(text) {
 }
 
 function gotData(data) { // obtained data from server
-	console.log(data);
+	//console.log(data);
 	rec = ""
 	document.getElementById("info-val").value = "sub"
 	getXVal(s(), gotSuccess, gotError)
@@ -38,7 +38,7 @@ function gotSuccess(m) {
 	var downvotes = document.getElementById("downvote")
 
 	m = JSON.parse(m)
-	console.log(m)
+	//console.log(m)
 
 	thoughtElem.style["color"] = "#000000"
 	thoughtElem.innerHTML = m["message"]
@@ -93,7 +93,10 @@ function getXVal(theUrl, callbackSuccess, callbackError) { // Sends http request
 		    	}
 		    }
 		}
+		//console.log(rec)
+		//console.log(getCookie("xdata"))
 		if(getCookie("xdata") == rec) {
+			//console.log("doing")
 			i.open("GET", theUrl, true); // true for asynchronous 
 			i.send();
 		}
@@ -138,7 +141,7 @@ document.getElementById("cache-submit").addEventListener("mousedown", function()
 	errorElem.style.visibility = "visible"
 	infoElem.value = "Submitting..."
 	var text = document.getElementById("cache-text").value
-	console.log(text.length)
+	//console.log(text.length)
 	if(text.length > 200) { // Too long
 		errorElem.innerHTML = keywords[0] + " (" + text.length + ")."
 		errorElem.style.color = "#ff9999"
@@ -149,8 +152,8 @@ document.getElementById("cache-submit").addEventListener("mousedown", function()
 		return
 	} else if(getCookie("xdata") == rec && infoElem.value == "Submitting...") { // All good
 		infoElem.value = "sub" // more spam stuff
-		asnPermValue("xdata", text, 60) // set spam-prevention cookie
 		getXVal((r() + text), thoughtSuccess, thoughtError) // THE ACTUAL SUBMIT TO SERVER FUNCTION
+		asnPermValue("xdata", text, 60) // set spam-prevention cookie
 	} else { // Too frequent
 		errorElem.innerHTML = keywords[2]
 		errorElem.style.color = "#ff9999"
