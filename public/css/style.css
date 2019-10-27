@@ -142,9 +142,9 @@ div.qCircle {
 	visibility: hidden;
 }
 #info-text > p, ul{
-	margin-left: 15vh;
-	margin-right: 15vh;
-	font-size: 2em;
+	margin-left: 8vh;
+	margin-right: 8vh;
+	font-size: 2vw;
 }
 .option-heading {
 	font-size: 9vw;
