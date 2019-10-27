@@ -15,6 +15,40 @@ function createThought(msg) {
 	};
 }
 
+exports.upvote = functions.https.onRequest(async (request, response) => {
+	response.set('Access-Control-Allow-Origin', '*');
+
+	response.status(200).send();
+});
+
+exports.downvote = functions.https.onRequest(async (request, response) => {
+	response.set('Access-Control-Allow-Origin', '*');
+
+	response.status(200).send();
+});
+
+exports.fetchThought = functions.https.onRequest(async (request, response) => {
+	response.set('Access-Control-Allow-Origin', '*');
+
+	admin.database().ref('messages/').once('value', function(snap){
+	    var out = JSON.parse(JSON.stringify(snap.val()));
+
+	    var thoughtArr = [];
+
+	    for (var key in out) {
+    		if (out.hasOwnProperty(key)) {
+        		thoughtArr.push(key);
+    		}
+		}
+	    var randChoice = Math.floor(Math.random() * thoughtArr.length);
+
+	    out[thoughtArr[randChoice]]["id"] = thoughtArr[randChoice]
+
+	    response.status(200).send(out[thoughtArr[randChoice]]);
+	});
+
+});
+
 exports.submitThought = functions.https.onRequest(async (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*');
 

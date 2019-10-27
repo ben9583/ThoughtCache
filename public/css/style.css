@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	overflow: hidden;
+	/*overflow: hidden;*/
 	background-color: #ff0000;
 	font-family: 'Roboto', sans-serif;
 }
@@ -52,8 +52,7 @@ div.qCircle {
 	transition: opacity 1s;
 	overflow: hidden;
 }
-.col
-{
+.col {
 	float: left;
 	width: 46%;
 	height: 400px;
@@ -78,6 +77,57 @@ div.qCircle {
 	-webkit-transition: background-color 0.5s, width 0.5s;
 	transition: background-color 0.5s, width 0.5s;
 }
+.thought-container {
+	background-color: #ffffff;
+	z-index: 2;
+}
+.vote-button {
+	width: 12%;
+	height: 50%;
+	float: left;
+	position: absolute;
+	font-size: 1.5em;
+	text-align: center;
+	display: flex;
+}
+.thought-text-container {
+	display: flex;
+	position: absolute;
+	left: 13%;
+	width: 86%;
+	top: 1%;
+	height: 98%;
+}
+.vote-button > p {
+	margin: auto;
+	text-align: center;
+}
+#thought-text {
+	color: #000000;
+	text-align: center;
+	margin: auto;
+	font-size: 1.2em;
+}
+#upvote-button {
+	background-color: #009900;
+	left:0;
+	top:0;
+}
+#downvote-button {
+	background-color: #990000;
+	left:0;
+	bottom:0;
+}
+#thought-pane {
+	position: absolute;
+	left: 30%;
+	width: 40%;
+	height: 25%;
+	visibility: hidden;
+	top: 100%;
+	-webkit-transition: top 0.5s ease 0.5s;
+	transition: top 0.5s ease 0.5s;
+}
 #info-pane {
 	background-color: #ffffff;
 	top: -51em;
@@ -89,6 +139,7 @@ div.qCircle {
 }
 #info-text {
 	margin-top: 15vh;
+	visibility: hidden;
 }
 #info-text > p, ul{
 	margin-left: 15vh;
@@ -125,14 +176,13 @@ div.qCircle {
 	height: 70%;
 	display: none;
 	opacity: 1;
-	/*z-index: 10;*/
 }
-
 #error-text {
 	font-size: 1.3em;
 	color: #ffffff;
 	visibility: hidden;
 }
+
 textarea {
 	width: 100%;
 	height: 95%;
