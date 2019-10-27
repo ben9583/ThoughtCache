@@ -10,7 +10,7 @@ function setStyle(objId, propertyObject) {
 function cacheHover() {
 	setStyle("cache-pane", {"background-color":"#1e3466", "color":"#ffffff"});
 	setStyle("fetch-pane", {"background-color":"#ffffff", "color":"#1e3466"});
-	setStyle("title", {"color":"#1e3466"});
+	setStyle("title", {"color":"#ffffff"});
 	setStyle("info", {"color":"#1e3466", "background-color": "#ffffff", "border":"4px solid #1e3466"});
 }
 
