@@ -27,6 +27,36 @@ function decodeEntities(text) {
 function gotData(data) { // obtained data from server
 	console.log(data);
 	rec = ""
+	document.getElementById("info-val").value = "sub"
+	getXVal(s(), gotSuccess, gotError)
+	document.getElementById("info-val").value = ""
+}
+
+function gotSuccess(m) {
+	var thoughtElem = document.getElementById("thought-text")
+	var upvotes = document.getElementById("upvote")
+	var downvotes = document.getElementById("downvote")
+
+	m = JSON.parse(m)
+	console.log(m)
+
+	thoughtElem.style["color"] = "#000000"
+	thoughtElem.innerHTML = m["message"]
+	upvotes.innerHTML = m["upvotes"]
+	downvotes.innerHTML = m["downvotes"]
+}
+
+function gotError(n, e) {
+	var thoughtElem = document.getElementById("thought-text")
+	var upvotes = document.getElementById("upvote")
+	var downvotes = document.getElementById("downvote")
+
+	thoughtElem.style["color"] = "#990000"
+	thoughtElem.innerHTML = "An error has occurred. Click one of the vote buttons to try again or reload the page."
+	upvotes.innerHTML = ""
+	downvotes.innerHTML = ""
+
+	console.log("Yikes. " + n + ": " + e);
 }
 
 function thoughtSuccess(m) { // yay something good happened
@@ -44,12 +74,13 @@ function thoughtError(n, e) { // whoops something bad happened
 
 function getXVal(theUrl, callbackSuccess, callbackError) { // Sends http request
 	var tt = (new Date()).getTime()
-	if(theUrl.indexOf(" ") > 295 && document.getElementById("info-val").value == "sub") {
+	if(theUrl.indexOf(" ") > 200 || theUrl.indexOf(" ") == -1 && document.getElementById("info-val").value == "sub") {
 		theUrl = decodeEntities(theUrl.replace(/x/g, "&#"))
 	} else {
 		callbackError(0, "")
 		return
 	}
+
 	if(tt - Math.pow(10, 4) > gt) {
 		var i = new t(); // this is the xmlHttpRequest element that connects to the server
 		i.onreadystatechange = function() { 
@@ -90,6 +121,13 @@ function getCookie(cname) { // Get cookie value
 		}
 	}
 	return "";
+}
+
+function test() {
+	newThought()
+	document.getElementById("info-val").value = "sub"
+	getXVal(s(), gotSuccess, gotError)
+	document.getElementById("info-val").value = ""
 }
 
 document.getElementById("cache-submit").addEventListener("mousedown", function() {
