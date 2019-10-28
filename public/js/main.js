@@ -81,15 +81,15 @@ function fetchPeekOut() {
 
 function newThought() {
 	setTimeout(function() {
-		setStyle("thought-pane", {"-webkit-transition":"top 0.5s ease 0s", "transition":"top 0.5s ease 0s", "top":"-40%"})
+		setStyle("thought-container", {"-webkit-transition":"left 0.5s ease 0s", "transition":"left 0.5s ease 0s", "left":"100%"})
 
 		setTimeout(function() {
-			setStyle("thought-pane", {"-webkit-transition":"top 0s ease 0s", "transition":"top 0s ease 0s", "top":"100%"})
+			setStyle("thought-container", {"-webkit-transition":"left 0s ease 0s", "transition":"left 0s ease 0s", "left":"-75%"})
 
 			setTimeout(function() {
-				setStyle("thought-pane", {"-webkit-transition":"top 0.5s ease 0.5s", "transition":"top 0.5s ease 0.5s", "top":"40%"})
-			}, 1000)
-		}, 1000)
+				setStyle("thought-container", {"-webkit-transition":"left 0.5s ease 0.5s", "transition":"left 0.5s ease 0.5s", "left":"12.5%"})
+			}, 250)
+		}, 250)
 		console.log(2)
 	}, 0) // I have no god damn reason why given 2 hours of focusing on this one thing but it does not work without setTimeout. To those who want to fix this, I wish you luck.
 }
@@ -110,7 +110,7 @@ function cacheClick() {
 	setStyle("fetch-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-text", {"opacity":"1"});
 	setStyle("cache-form", {"display":"block"});
-	setStyle("thought-pane", {"visibility":"hidden"})
+	setStyle("thought-container", {"visibility":"hidden", "opacity":"0"})
 	setStyle("upvote-button", {"visibility":"hidden", "opacity":"0"});
 	setStyle("downvote-button", {"visibility":"hidden", "opacity":"0"});
 	fetchElem.addEventListener("mouseenter", fetchPeekIn);
@@ -133,7 +133,7 @@ function fetchClick() {
 	setStyle("cache-heading", {"opacity":"0", "visibility":"hidden"});
 	setStyle("cache-text", {"opacity":"0"});
 	setStyle("cache-form", {"display":"none"});
-	setStyle("thought-pane", {"visibility":"visible", "top":"40%"})
+	setStyle("thought-container", {"visibility":"visible", "opacity":"1"})
 	setStyle("upvote-button", {"visibility":"visible", "opacity":"1"});
 	setStyle("downvote-button", {"visibility":"visible", "opacity":"1"});
 	cacheElem.addEventListener("mouseenter", cachePeekIn);
