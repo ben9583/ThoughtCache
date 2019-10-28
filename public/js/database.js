@@ -40,7 +40,7 @@ function gotSuccess(m) {
 	m = JSON.parse(m)
 	//console.log(m)
 
-	thoughtElem.style["color"] = "#000000"
+	// thoughtElem.style["color"] = "#ffffff"
 	thoughtElem.innerHTML = m["message"]
 	upvotes.innerHTML = m["upvotes"]
 	downvotes.innerHTML = m["downvotes"]
@@ -51,7 +51,7 @@ function gotError(n, e) {
 	var upvotes = document.getElementById("upvote")
 	var downvotes = document.getElementById("downvote")
 
-	thoughtElem.style["color"] = "#990000"
+	// thoughtElem.style["color"] = "#990000"
 	thoughtElem.innerHTML = "An error has occurred. Click one of the vote buttons to try again or reload the page."
 	upvotes.innerHTML = ""
 	downvotes.innerHTML = ""
