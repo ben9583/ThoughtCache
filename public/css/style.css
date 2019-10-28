@@ -130,7 +130,7 @@ div.qCircle {
 }
 #info-pane {
 	background-color: #ffffff;
-	top: -51em;
+	top: -100%;
 	transition: top 0.5s;
 	position: absolute;
 	z-index:2;

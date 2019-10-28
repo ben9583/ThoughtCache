@@ -152,7 +152,7 @@ function infoClick() {
 		setStyle("cache-pane", {"visibility":"visible"});
 		setStyle("fetch-pane", {"visibility":"visible"});
 		setStyle("title", {"visibility":"visible"});
-		setStyle("info-pane", {"top":"-51em"})
+		setStyle("info-pane", {"top":"-100%"})
 		setStyle("info", {"color":"#ffffff", "background-color":"#1e3466", "border":"4px solid #ffffff"})
 		setStyle("info-text", {"visibility":"hidden"})
 	}
