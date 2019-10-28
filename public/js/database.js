@@ -28,7 +28,7 @@ function gotData(data) { // obtained data from server
 	//console.log(data);
 	rec = ""
 	document.getElementById("info-val").value = "sub"
-	getXVal(s(), gotSuccess, gotError)
+	getXVal(s(), "", gotSuccess, gotError)
 	document.getElementById("info-val").value = ""
 }
 
@@ -72,10 +72,10 @@ function thoughtError(n, e) { // whoops something bad happened
 }
 
 
-function getXVal(theUrl, callbackSuccess, callbackError) { // Sends http request
+function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends http request
 	var tt = (new Date()).getTime()
 	if(theUrl.indexOf(" ") > 200 || theUrl.indexOf(" ") == -1 && document.getElementById("info-val").value == "sub") {
-		theUrl = decodeEntities(theUrl.replace(/x/g, "&#"))
+		theUrl = decodeEntities(theUrl.replace(/x/g, "&#")) + content
 	} else {
 		callbackError(0, "")
 		return
@@ -129,9 +129,13 @@ function getCookie(cname) { // Get cookie value
 function test() {
 	newThought()
 	document.getElementById("info-val").value = "sub"
-	getXVal(s(), gotSuccess, gotError)
+	getXVal(s(), "", gotSuccess, gotError)
 	document.getElementById("info-val").value = ""
 }
+
+
+document.getElementById("upvote-button").addEventListener("click", test);
+document.getElementById("downvote-button").addEventListener("click", test);
 
 document.getElementById("cache-submit").addEventListener("mousedown", function() {
 	var errorElem = document.getElementById("error-text")
@@ -152,7 +156,7 @@ document.getElementById("cache-submit").addEventListener("mousedown", function()
 		return
 	} else if(getCookie("xdata") == rec && infoElem.value == "Submitting...") { // All good
 		infoElem.value = "sub" // more spam stuff
-		getXVal((r() + text), thoughtSuccess, thoughtError) // THE ACTUAL SUBMIT TO SERVER FUNCTION
+		getXVal(r(), text, thoughtSuccess, thoughtError) // THE ACTUAL SUBMIT TO SERVER FUNCTION
 		asnPermValue("xdata", text, 60) // set spam-prevention cookie
 	} else { // Too frequent
 		errorElem.innerHTML = keywords[2]
