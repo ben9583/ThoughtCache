@@ -78,17 +78,19 @@ div.qCircle {
 	transition: background-color 0.5s, width 0.5s;
 }
 .thought-container {
-	background-color: #ffffff;
 	z-index: 2;
 }
 .vote-button {
-	width: 12%;
+	width: 100%;
 	height: 50%;
 	float: left;
 	position: absolute;
 	font-size: 1.5em;
 	text-align: center;
 	display: flex;
+	visibility: hidden;
+	opacity: 0;
+	transition: background-color 0.25s, visibility 0.5s, opacity 0.5s;
 }
 .thought-text-container {
 	display: flex;
@@ -97,6 +99,7 @@ div.qCircle {
 	width: 86%;
 	top: 1%;
 	height: 98%;
+	color: #ffffff;
 }
 .vote-button > p {
 	margin: auto;
@@ -113,10 +116,16 @@ div.qCircle {
 	left:0;
 	top:0;
 }
+#upvote-button:hover {
+	background-color: #00cc00;
+}
 #downvote-button {
 	background-color: #990000;
 	left:0;
 	bottom:0;
+}
+#downvote-button:hover {
+	background-color: #cc0000;
 }
 #thought-pane {
 	position: absolute;

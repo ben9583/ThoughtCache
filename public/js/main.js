@@ -63,21 +63,21 @@ function fetchPeekOut() {
 	setStyle("cache-pane", {"width":"93%"});
 }
 
-function upvoteHoverIn() {
-	setStyle("upvote-button", {"background-color":"#00cc00"})
-}
+// function upvoteHoverIn() {
+// 	setStyle("upvote-button", {"background-color":"#00cc00"})
+// }
 
-function upvoteHoverOut() {
-	setStyle("upvote-button", {"background-color":"#009900"})
-}
+// function upvoteHoverOut() {
+// 	setStyle("upvote-button", {"background-color":"#009900"})
+// }
 
-function downvoteHoverIn() {
-	setStyle("downvote-button", {"background-color":"#cc0000"})
-}
+// function downvoteHoverIn() {
+// 	setStyle("downvote-button", {"background-color":"#cc0000"})
+// }
 
-function downvoteHoverOut() {
-	setStyle("downvote-button", {"background-color":"#990000"})
-}
+// function downvoteHoverOut() {
+// 	setStyle("downvote-button", {"background-color":"#990000"})
+// }
 
 function newThought() {
 	setTimeout(function() {
@@ -111,6 +111,8 @@ function cacheClick() {
 	setStyle("cache-text", {"opacity":"1"});
 	setStyle("cache-form", {"display":"block"});
 	setStyle("thought-pane", {"visibility":"hidden"})
+	setStyle("upvote-button", {"visibility":"hidden", "opacity":"0"});
+	setStyle("downvote-button", {"visibility":"hidden", "opacity":"0"});
 	fetchElem.addEventListener("mouseenter", fetchPeekIn);
 	fetchElem.addEventListener("mouseleave", fetchPeekOut);
 }
@@ -132,6 +134,8 @@ function fetchClick() {
 	setStyle("cache-text", {"opacity":"0"});
 	setStyle("cache-form", {"display":"none"});
 	setStyle("thought-pane", {"visibility":"visible", "top":"40%"})
+	setStyle("upvote-button", {"visibility":"visible", "opacity":"1"});
+	setStyle("downvote-button", {"visibility":"visible", "opacity":"1"});
 	cacheElem.addEventListener("mouseenter", cachePeekIn);
 	cacheElem.addEventListener("mouseleave", cachePeekOut);
 }
@@ -168,10 +172,10 @@ function main() {
 	document.getElementById("info").addEventListener("click", infoClick);
 	document.getElementById("cache-pane").addEventListener("click", cacheClick);
 	document.getElementById("fetch-pane").addEventListener("click", fetchClick);
-	document.getElementById("upvote-button").addEventListener("mouseover", upvoteHoverIn);
-	document.getElementById("upvote-button").addEventListener("mouseleave", upvoteHoverOut);
-	document.getElementById("downvote-button").addEventListener("mouseover", downvoteHoverIn);
-	document.getElementById("downvote-button").addEventListener("mouseleave", downvoteHoverOut);
+	// document.getElementById("upvote-button").addEventListener("mouseover", upvoteHoverIn);
+	// document.getElementById("upvote-button").addEventListener("mouseleave", upvoteHoverOut);
+	// document.getElementById("downvote-button").addEventListener("mouseover", downvoteHoverIn);
+	// document.getElementById("downvote-button").addEventListener("mouseleave", downvoteHoverOut);
 	document.getElementById("upvote-button").addEventListener("click", test);
 	document.getElementById("downvote-button").addEventListener("click", test);
 }
