@@ -99,20 +99,20 @@ div.qCircle {
 	font-size: 2em;
 }
 #upvote-button {
-	background-color: #009900;
+	background-color: #1b5e20;
 	left:0;
 	top:0;
 }
 #upvote-button:hover {
-	background-color: #00cc00;
+	background-color: #2e7d32;
 }
 #downvote-button {
-	background-color: #990000;
+	background-color: #b71c1c;
 	left:0;
 	bottom:0;
 }
 #downvote-button:hover {
-	background-color: #cc0000;
+	background-color: #d32f2f;
 }
 #thought-container {
 	position: absolute;
@@ -125,6 +125,7 @@ div.qCircle {
   	transform: translateY(-50%);
 	-webkit-transition: visibility 0.5s, opacity 0.5s, left 0.5s, ease 0.5s;
 	transition: visibility 0.5s, opacity 0.5s, left 0.5s, ease 0.5s;
+	margin: 0;
 }
 #info-pane {
 	background-color: #ffffff;
