@@ -94,7 +94,7 @@ function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends htt
 				i.send();
 				setTimeout(function() {
 					sw = true
-					asnPermValue("xdata", "", 60)
+					asnPermValue("xdata", "", 20)
 				}, 20000);
 			}
 		}
