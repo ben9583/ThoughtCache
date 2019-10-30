@@ -182,7 +182,7 @@ function subT(e) {
 	} else if(getCookie("xdata") == rec && infoElem.value == "Submitting..." && sw) { // All good
 		infoElem.value = "sub" // more spam stuff
 		getXVal(r(), text, thoughtSuccess, thoughtError) // THE ACTUAL SUBMIT TO SERVER FUNCTION
-		asnPermValue("xdata", text, 60) // set spam-prevention cookie
+		asnPermValue("xdata", text, 20) // set spam-prevention cookie
 		document.getElementById("cache-text").value = ""
 	} else { // Too frequent
 		errorElem.innerHTML = keywords[2]
