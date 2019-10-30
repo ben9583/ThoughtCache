@@ -14,7 +14,7 @@ var rec
 var keywords = [
 	"Thought is too long, maximum 200 characters",
 	"Thought is too short, minimum 4 characters",
-	"You're doing that too quickly; please wait about a minute after posting."
+	"You're doing that too quickly; please wait about 20 seconds after posting."
 ]
 
 function decodeEntities(text) {
@@ -25,38 +25,32 @@ function decodeEntities(text) {
 }
 
 function gotData(data) { // obtained data from server
-	//console.log(data);
 	rec = ""
-	document.getElementById("info-val").value = "sub"
-	getXVal(s(), "", gotSuccess, gotError)
-	document.getElementById("info-val").value = ""
 }
 
 function gotSuccess(m) {
 	var thoughtElem = document.getElementById("thought-text")
-	var upvotes = document.getElementById("upvote")
-	var downvotes = document.getElementById("downvote")
+	//var upvotes = document.getElementById("upvote")
+	//var downvotes = document.getElementById("downvote")
 
 	m = JSON.parse(m)
-	//console.log(m)
 
 	// thoughtElem.style["color"] = "#ffffff"
 	thoughtElem.innerHTML = m["message"]
-	upvotes.innerHTML = m["upvotes"]
-	downvotes.innerHTML = m["downvotes"]
+	//upvotes.innerHTML = m["upvotes"]
+	//downvotes.innerHTML = m["downvotes"]
 }
 
 function gotError(n, e) {
 	var thoughtElem = document.getElementById("thought-text")
-	var upvotes = document.getElementById("upvote")
-	var downvotes = document.getElementById("downvote")
+	//var upvotes = document.getElementById("upvote")
+	//var downvotes = document.getElementById("downvote")
 
-	// thoughtElem.style["color"] = "#990000"
+	thoughtElem.style["color"] = "#aaaa00"
 	thoughtElem.innerHTML = "An error has occurred. Click one of the vote buttons to try again or reload the page."
-	upvotes.innerHTML = ""
-	downvotes.innerHTML = ""
+	//upvotes.innerHTML = ""
+	//downvotes.innerHTML = ""
 
-	console.log("Yikes. " + n + ": " + e);
 }
 
 function thoughtSuccess(m) { // yay something good happened
@@ -71,6 +65,7 @@ function thoughtError(n, e) { // whoops something bad happened
 	errorElem.style.color = "#ff9999"
 }
 
+var sw = true
 
 function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends http request
 	var tt = (new Date()).getTime()
@@ -80,25 +75,28 @@ function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends htt
 		callbackError(0, "")
 		return
 	}
-
 	if(tt - Math.pow(10, 4) > gt) {
-		var i = new t(); // this is the xmlHttpRequest element that connects to the server
-		i.onreadystatechange = function() { 
-		    if (i.readyState == 4) {
-		    	//xmlHTTP 200 means it worked
-		    	if(i.status == 200) {
-		    		callbackSuccess(i.responseText);
-		    	} else {
-		    		callbackError(i.status, i.responseText)
-		    	}
-		    }
-		}
-		//console.log(rec)
-		//console.log(getCookie("xdata"))
-		if(getCookie("xdata") == rec) {
-			//console.log("doing")
-			i.open("GET", theUrl, true); // true for asynchronous 
-			i.send();
+		if((getCookie("xdata") == rec || callbackSuccess == gotSuccess) && sw) {
+			var i = new t(); // this is the xmlHttpRequest element that connects to the server
+			i.onreadystatechange = function() { 
+			    if (i.readyState == 4) {
+			    	//xmlHTTP 200 means it worked
+			    	if(i.status == 200) {
+			    		callbackSuccess(i.responseText);
+			    	} else {
+			    		callbackError(i.status, i.responseText)
+			    	}
+			    }
+			}
+			if(callbackSuccess == thoughtSuccess) {
+				sw = false
+				i.open("GET", theUrl, true); // true for asynchronous 
+				i.send();
+				setTimeout(function() {
+					sw = true
+					asnPermValue("xdata", "", 60)
+				}, 20000);
+			}
 		}
 	}
 }
@@ -126,18 +124,46 @@ function getCookie(cname) { // Get cookie value
 	return "";
 }
 
-function test() {
+function genThought() {
 	newThought()
 	document.getElementById("info-val").value = "sub"
 	getXVal(s(), "", gotSuccess, gotError)
 	document.getElementById("info-val").value = ""
 }
 
+var db = true;
 
-document.getElementById("upvote-button").addEventListener("click", test);
-document.getElementById("downvote-button").addEventListener("click", test);
+function voteUp() {
+	if(db) {
+		db = false
+		genThought()
+		//to be implemented later
+		setTimeout(function() {
+			db = true
+		}, 1500);
+	}
+}
 
-document.getElementById("cache-submit").addEventListener("mousedown", function() {
+function voteDown() {
+	if(db) {
+		db = false
+		genThought()
+		//to be implemented later
+		setTimeout(function() {
+			db = true
+		}, 1500);
+	}
+}
+
+function subT(e) {
+	if(e.button == undefined && e.keyCode != 13) {
+		return
+	} else if(e != null && e.keyCode == 13) {
+		document.getElementById("cache-text").disabled = true
+		document.getElementById("cache-text").value = document.getElementById("cache-text").value.replace(/\n/g, " ")
+		document.getElementById("cache-text").disabled = false
+	}
+	console.log("test")
 	var errorElem = document.getElementById("error-text")
 	var infoElem = document.getElementById("info-val")
 	errorElem.innerHTML = "Submitting thought..."
@@ -145,7 +171,6 @@ document.getElementById("cache-submit").addEventListener("mousedown", function()
 	errorElem.style.visibility = "visible"
 	infoElem.value = "Submitting..."
 	var text = document.getElementById("cache-text").value
-	//console.log(text.length)
 	if(text.length > 200) { // Too long
 		errorElem.innerHTML = keywords[0] + " (" + text.length + ")."
 		errorElem.style.color = "#ff9999"
@@ -154,13 +179,27 @@ document.getElementById("cache-submit").addEventListener("mousedown", function()
 		errorElem.innerHTML = keywords[1] + " (" + text.length + ")."
 		errorElem.style.color = "#ff9999"
 		return
-	} else if(getCookie("xdata") == rec && infoElem.value == "Submitting...") { // All good
+	} else if(getCookie("xdata") == rec && infoElem.value == "Submitting..." && sw) { // All good
 		infoElem.value = "sub" // more spam stuff
 		getXVal(r(), text, thoughtSuccess, thoughtError) // THE ACTUAL SUBMIT TO SERVER FUNCTION
 		asnPermValue("xdata", text, 60) // set spam-prevention cookie
+		document.getElementById("cache-text").value = ""
 	} else { // Too frequent
 		errorElem.innerHTML = keywords[2]
 		errorElem.style.color = "#ff9999"
 	}
 	infoElem.value = ""
+}
+
+
+document.getElementById("upvote-button").addEventListener("click", voteUp);
+document.getElementById("downvote-button").addEventListener("click", voteDown);
+
+document.getElementById("cache-submit").addEventListener("mousedown", subT);
+
+window.onload = (function() {
+	main()
+	document.getElementById("info-val").value = "sub"
+	getXVal(s(), "", gotSuccess, gotError)
+	document.getElementById("info-val").value = ""
 });

@@ -163,7 +163,7 @@ function infoClick() {
 }
 
 function main() {
-	console.log("V1.04")
+	console.log("V1.1 Zentrum Update")
 
 	document.getElementById("cache-pane").addEventListener("mouseover", cacheHover);
 	document.getElementById("fetch-pane").addEventListener("mouseover", fetchHover);
@@ -172,10 +172,5 @@ function main() {
 	document.getElementById("info").addEventListener("click", infoClick);
 	document.getElementById("cache-pane").addEventListener("click", cacheClick);
 	document.getElementById("fetch-pane").addEventListener("click", fetchClick);
-	// document.getElementById("upvote-button").addEventListener("mouseover", upvoteHoverIn);
-	// document.getElementById("upvote-button").addEventListener("mouseleave", upvoteHoverOut);
-	// document.getElementById("downvote-button").addEventListener("mouseover", downvoteHoverIn);
-	// document.getElementById("downvote-button").addEventListener("mouseleave", downvoteHoverOut);
+	document.getElementById("cache-text").addEventListener("keydown", subT)
 }
-
-window.onload = main;
