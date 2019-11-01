@@ -85,12 +85,7 @@ function newThought() {
 
 		setTimeout(function() {
 			setStyle("thought-container", {"-webkit-transition":"left 0s ease 0s", "transition":"left 0s ease 0s", "left":"-75%"})
-
-			setTimeout(function() {
-				setStyle("thought-container", {"-webkit-transition":"left 0.5s ease 0.5s", "transition":"left 0.5s ease 0.5s", "left":"12.5%"})
-			}, 250)
 		}, 250)
-		console.log(2)
 	}, 0) // I have no god damn reason why given 2 hours of focusing on this one thing but it does not work without setTimeout. To those who want to fix this, I wish you luck.
 }
 

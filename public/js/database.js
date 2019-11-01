@@ -39,6 +39,9 @@ function gotSuccess(m) {
 	thoughtElem.innerHTML = m["message"]
 	//upvotes.innerHTML = m["upvotes"]
 	//downvotes.innerHTML = m["downvotes"]
+	setTimeout(function() {
+		setStyle("thought-container", {"-webkit-transition":"left 0.5s ease 0.5s", "transition":"left 0.5s ease 0.5s", "left":"12.5%"})
+	}, 250)
 }
 
 function gotError(n, e) {
@@ -76,7 +79,7 @@ function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends htt
 		return
 	}
 	if(tt - Math.pow(10, 4) > gt) {
-		if((getCookie("xdata") == rec || callbackSuccess == gotSuccess) && sw) {
+		if((getCookie("xdata") == rec && sw) || callbackSuccess == gotSuccess) {
 			var i = new t(); // this is the xmlHttpRequest element that connects to the server
 			i.onreadystatechange = function() { 
 			    if (i.readyState == 4) {
@@ -88,10 +91,11 @@ function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends htt
 			    	}
 			    }
 			}
+			sw = false
+			i.open("GET", theUrl, true); // true for asynchronous 
+			i.send();
+			console.log("test")
 			if(callbackSuccess == thoughtSuccess) {
-				sw = false
-				i.open("GET", theUrl, true); // true for asynchronous 
-				i.send();
 				setTimeout(function() {
 					sw = true
 					asnPermValue("xdata", "", 20)
