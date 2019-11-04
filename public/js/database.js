@@ -30,15 +30,12 @@ function gotData(data) { // obtained data from server
 
 function gotSuccess(m) {
 	var thoughtElem = document.getElementById("thought-text")
-	//var upvotes = document.getElementById("upvote")
-	//var downvotes = document.getElementById("downvote")
 
 	m = JSON.parse(m)
 
-	// thoughtElem.style["color"] = "#ffffff"
+	document.getElementById("thought-id").value = m["id"]
 	thoughtElem.innerHTML = m["message"]
-	//upvotes.innerHTML = m["upvotes"]
-	//downvotes.innerHTML = m["downvotes"]
+
 	setTimeout(function() {
 		setStyle("thought-container", {"-webkit-transition":"left 0.5s ease 0.5s", "transition":"left 0.5s ease 0.5s", "left":"12.5%"})
 	}, 250)
@@ -72,6 +69,7 @@ var sw = true
 
 function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends http request
 	var tt = (new Date()).getTime()
+	console.log()
 	if(theUrl.indexOf(" ") > 200 || theUrl.indexOf(" ") == -1 && document.getElementById("info-val").value == "sub") {
 		theUrl = decodeEntities(theUrl.replace(/x/g, "&#")) + content
 	} else {
@@ -91,11 +89,10 @@ function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends htt
 			    	}
 			    }
 			}
-			sw = false
 			i.open("GET", theUrl, true); // true for asynchronous 
 			i.send();
-			console.log("test")
 			if(callbackSuccess == thoughtSuccess) {
+				sw = false
 				setTimeout(function() {
 					sw = true
 					asnPermValue("xdata", "", 20)
@@ -137,9 +134,22 @@ function genThought() {
 
 var db = true;
 
+function voteSuccess(m) {
+	document.getElementById("thought-id").value = ""
+	return
+}
+
+function voteError(n, e) {
+	console.log("Yikes. A " + n + " error has occurred: " + e)
+	return
+}
+
 function voteUp() {
 	if(db) {
 		db = false
+		document.getElementById("info-val").value = "sub"
+		getXVal(u(), document.getElementById("thought-id").value, voteSuccess, voteError)
+		document.getElementById("info-val").value = ""
 		genThought()
 		//to be implemented later
 		setTimeout(function() {
@@ -151,6 +161,9 @@ function voteUp() {
 function voteDown() {
 	if(db) {
 		db = false
+		document.getElementById("info-val").value = "sub"
+		getXVal(v(), document.getElementById("thought-id").value, voteSuccess, voteError)
+		document.getElementById("info-val").value = ""
 		genThought()
 		//to be implemented later
 		setTimeout(function() {

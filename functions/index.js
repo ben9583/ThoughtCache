@@ -18,11 +18,23 @@ function createThought(msg) {
 exports.upvote = functions.https.onRequest(async (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*');
 
+	const id = request.query.id
+
+	admin.database().ref('messages/' + id).once('value', function(snap){
+		admin.database().ref('messages/' + id + '/upvotes').set(parseInt(snap.val()) + 1)
+	});
+
 	response.status(200).send();
 });
 
 exports.downvote = functions.https.onRequest(async (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*');
+
+	const id = request.query.id
+
+	admin.database().ref('messages/' + id).once('value', function(snap){
+		admin.database().ref('messages/' + id + '/upvotes').set(parseInt(snap.val()) - 1)
+	});
 
 	response.status(200).send();
 });
