@@ -69,7 +69,6 @@ var sw = true
 
 function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends http request
 	var tt = (new Date()).getTime()
-	console.log()
 	if(theUrl.indexOf(" ") > 200 || theUrl.indexOf(" ") == -1 && document.getElementById("info-val").value == "sub") {
 		theUrl = decodeEntities(theUrl.replace(/x/g, "&#")) + content
 	} else {
@@ -135,7 +134,7 @@ function genThought() {
 var db = true;
 
 function voteSuccess(m) {
-	document.getElementById("thought-id").value = ""
+	//document.getElementById("thought-id").value = ""
 	return
 }
 
@@ -180,7 +179,6 @@ function subT(e) {
 		document.getElementById("cache-text").value = document.getElementById("cache-text").value.replace(/\n/g, " ")
 		document.getElementById("cache-text").disabled = false
 	}
-	console.log("test")
 	var errorElem = document.getElementById("error-text")
 	var infoElem = document.getElementById("info-val")
 	errorElem.innerHTML = "Submitting thought..."

@@ -20,7 +20,7 @@ exports.upvote = functions.https.onRequest(async (request, response) => {
 
 	const id = request.query.id
 
-	admin.database().ref('messages/' + id).once('value', function(snap){
+	admin.database().ref('messages/' + id + '/upvotes').once('value', function(snap){
 		admin.database().ref('messages/' + id + '/upvotes').set(parseInt(snap.val()) + 1)
 	});
 
@@ -32,8 +32,8 @@ exports.downvote = functions.https.onRequest(async (request, response) => {
 
 	const id = request.query.id
 
-	admin.database().ref('messages/' + id).once('value', function(snap){
-		admin.database().ref('messages/' + id + '/upvotes').set(parseInt(snap.val()) - 1)
+	admin.database().ref('messages/' + id + '/downvotes').once('value', function(snap){
+		admin.database().ref('messages/' + id + '/downvotes').set(parseInt(snap.val()) + 1)
 	});
 
 	response.status(200).send();
