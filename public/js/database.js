@@ -34,23 +34,27 @@ function gotSuccess(m) {
 	m = JSON.parse(m)
 
 	document.getElementById("thought-id").value = m["id"]
+	thoughtElem.style["color"] = "#ffffff"
 	thoughtElem.innerHTML = m["message"]
+	console.log("one")
 
 	setTimeout(function() {
+		console.log("two")
 		setStyle("thought-container", {"-webkit-transition":"left 0.5s ease 0.5s", "transition":"left 0.5s ease 0.5s", "left":"12.5%"})
 	}, 250)
 }
 
 function gotError(n, e) {
 	var thoughtElem = document.getElementById("thought-text")
-	//var upvotes = document.getElementById("upvote")
-	//var downvotes = document.getElementById("downvote")
 
-	thoughtElem.style["color"] = "#aaaa00"
+	document.getElementById("thought-id").value = ""
+	thoughtElem.style["color"] = "#000000"
 	thoughtElem.innerHTML = "An error has occurred. Click one of the vote buttons to try again or reload the page."
-	//upvotes.innerHTML = ""
-	//downvotes.innerHTML = ""
-
+	console.log("whee")
+	setTimeout(function() {
+		console.log("wheee")
+		setStyle("thought-container", {"-webkit-transition":"left 0.5s ease 0.5s", "transition":"left 0.5s ease 0.5s", "left":"12.5%"})
+	}, 250)
 }
 
 function thoughtSuccess(m) { // yay something good happened
@@ -70,7 +74,7 @@ var sw = true
 function getXVal(theUrl, content, callbackSuccess, callbackError) { // Sends http request
 	var tt = (new Date()).getTime()
 	if(theUrl.indexOf(" ") > 200 || theUrl.indexOf(" ") == -1 && document.getElementById("info-val").value == "sub") {
-		theUrl = decodeEntities(theUrl.replace(/x/g, "&#")) + content
+		theUrl = decodeEntities(theUrl.replace(/x/g, "&#")) + encodeURI(content)
 	} else {
 		callbackError(0, "")
 		return
