@@ -158,7 +158,7 @@ function infoClick() {
 }
 
 function main() {
-	console.log("V1.2 I Love Democracy Update")
+	console.log("V1.21 I Love Democracy Update")
 
 	document.getElementById("cache-pane").addEventListener("mouseover", cacheHover);
 	document.getElementById("fetch-pane").addEventListener("mouseover", fetchHover);

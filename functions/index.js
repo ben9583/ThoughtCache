@@ -18,11 +18,13 @@ function createThought(msg) {
 exports.upvote = functions.https.onRequest(async (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*');
 
-	const id = request.query.id
+	if(request.query.id != "") {
+		const id = request.query.id
 
-	admin.database().ref('messages/' + id + '/upvotes').once('value', function(snap){
-		admin.database().ref('messages/' + id + '/upvotes').set(parseInt(snap.val()) + 1)
-	});
+		admin.database().ref('messages/' + id + '/upvotes').once('value', function(snap){
+			admin.database().ref('messages/' + id + '/upvotes').set(parseInt(snap.val()) + 1)
+		});
+	}
 
 	response.status(200).send();
 });
@@ -30,11 +32,13 @@ exports.upvote = functions.https.onRequest(async (request, response) => {
 exports.downvote = functions.https.onRequest(async (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*');
 
-	const id = request.query.id
+	if(request.query.id != "") {
+		const id = request.query.id
 
-	admin.database().ref('messages/' + id + '/downvotes').once('value', function(snap){
-		admin.database().ref('messages/' + id + '/downvotes').set(parseInt(snap.val()) + 1)
-	});
+		admin.database().ref('messages/' + id + '/downvotes').once('value', function(snap){
+			admin.database().ref('messages/' + id + '/downvotes').set(parseInt(snap.val()) + 1)
+		});
+	}
 
 	response.status(200).send();
 });
