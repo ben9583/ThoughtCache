@@ -125,6 +125,7 @@ div.qCircle {
 	-webkit-transition: visibility 0.5s, opacity 0.5s, left 0.5s, ease 0.5s;
 	transition: visibility 0.5s, opacity 0.5s, left 0.5s, ease 0.5s;
 	margin: 0;
+	pointer-events: none;
 }
 #info-pane {
 	background-color: #ffffff;
