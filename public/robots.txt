@@ -1,8 +1,22 @@
-User-agent: Google
-Disallow:
-
-User-agent: Mediapartners-Google
-Disallow:
-
-User-agent: *
+User-Agent: *
 Disallow: /
+
+User-Agent: Google
+Allow: /
+
+User-Agent: Googlebot
+Allow: /
+
+User-Agent: Googlebot-Mobile
+Allow: /
+
+User-Agent: Googlebot-Image
+Allow: /
+
+User-Agent: Mediapartners-Google
+Allow: /
+
+User-Agent: Adsbot-Google
+Allow: /
+
+Sitemap: https://thoughtcache.me/sitemap.xml
