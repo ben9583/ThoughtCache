@@ -63,8 +63,3 @@ node_modules/
 
 # dotenv environment variables file
 .env
-
-# large file
-dist/macos/thoughtcache-darwin-x64/thoughtcache.app/Contents/Frameworks/Electron\ Framework.framework/Versions/A/Electron\ Framework
-
-dist/macos/thoughtcache-darwin-x64/thoughtcache.app/Contents/Frameworks/Electron\ Framework.framework/Electron\ Framework
