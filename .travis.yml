@@ -27,8 +27,8 @@ install:
   - cd ../..
   - npm install uglify-js -g
 after_success:
+  - cd source
   - |
     if [ $TRAVIS_EVENT_TYPE == "push" ] && [ $TRAVIS_BRANCH == "master" ] ; then
-      cd source ;
       firebase deploy --project thoughtcache --token $FIREBASE_TOKEN ;
     fi
