@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Have a thought you want to get out? Put it here, and others will see it. No account required. See other people's thoughts as well." />
+	<title>ThoughtCache</title>
+	
+	<link rel="stylesheet" type="text/css" href="./css/roboto.css" defer>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+	<link rel="icon" type="image/x-icon" href="./favicon/favicon.ico"/>
+	<link rel="icon" type="image/png" href="./favicon/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="./favicon/favicon-16x16.png" sizes="16x16" />
+
+	<script src="./js/other_data.js"></script>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+	     (adsbygoogle = window.adsbygoogle || []).push({
+	          google_ad_client: "ca-pub-6571945454881185",
+	          enable_page_level_ads: true
+	     });
+	</script>
+</head>
+<body>
+	<div id="info" class="qCircle"><p>?</p></div>
+	<h5 id="title">ThoughtCache</h5>
+	<div id="cache-pane" class="option-pane">
+		<h1 id="cache-heading" class="option-heading">CACHE</h1>
+		<div id="cache-form">
+			<input type="hidden" value="" id="info-val" />
+			<input type="hidden" value="" id="thought-id" />
+			<textarea id="cache-text" name="thought" placeholder="Cache your thoughts"></textarea>
+			<input id="cache-submit" type="submit" value="Cache" />
+			<p id="error-text"></p>
+		</div>
+	</div>
+	<div id="fetch-pane" class="option-pane">
+		<h1 id="fetch-heading" class="option-heading">FETCH</h1>
+		<div id="upvote-button" class="vote-button"></div>
+		<div id="downvote-button" class="vote-button"></div>
+		<div id="thought-container"><p id="thought-text"></p></div>
+	</div>
+	<div id="info-pane">
+		<div id="info-text">
+			<p><strong>ThoughtCache</strong> allows you to anonymously share your interesting, insightful, or quirky thoughts with others.</p>
+			<ul>
+				<li><strong>CACHE</strong> allows you to submit a thought.</li>
+				<li><strong>FETCH</strong> allows you to see the thoughts everyone has submitted, as well as upvote the thoughts you like and downvote the ones you don't like.</li>
+			</ul>
+			<p>You can post a maximum of one thought per minute, and all thoughts are purged after a week.</p>
+		</div>
+	</div>
+	
+	
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+	<!-- Add Firebase products that you want to use -->
+	<!-- <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script> -->
+	<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+	<!-- <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script> -->
+	<script src="./js/main.js"></script>
+	<script src="./js/database.js"></script>
+	<script src="https://thoughtcache.firebaseio.com/messages.json?callback=gotData&shallow=true" defer></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			try {
+				let app = firebase.app();
+				let features = ['database'].filter(feature => typeof app[feature] === 'function');
+				console.log("Success");
+			} catch (e) {
+				console.log("Error: " + e);
+			}
+		});
+	</script>
+</body>
+</html>
