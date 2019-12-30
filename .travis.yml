@@ -13,7 +13,7 @@ script:
   - mv mainX.js main.js
   - mv databaseX.js database.js
   #- cat main.js
-  - ../../..
+  - cd ../../..
   - echo "Deploy!!"
 install:
   - |
