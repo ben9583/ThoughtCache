@@ -87,3 +87,21 @@ exports.submitThought = functions.https.onRequest(async (request, response) => {
 		response.status(200).send("Your thought has been submitted");
 	}
 });
+
+exports.purgeThoughts = functions.https.onRequest(async (request, response) => {
+	const time = new Date() / 1000;
+
+	if(request.query.key != "9a94d0f0d1ace739cd201e93bac69420addbcef") {
+		response.status(403).send("Unauthorized")
+		return
+	}
+
+	admin.database().forEach(function(snap) {
+		if(snap.key() + 604800 < time) {
+			// more than a week old
+			snap.remove()
+		}
+	})
+
+	response.status(200).send("Older thoughts have been purged.");
+});
