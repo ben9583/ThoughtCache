@@ -47,20 +47,20 @@ exports.fetchThought = functions.https.onRequest(async (request, response) => {
 	response.set('Access-Control-Allow-Origin', '*');
 
 	admin.database().ref('messages/').once('value', function(snap){
-	    var out = JSON.parse(JSON.stringify(snap.val()));
+		var out = JSON.parse(JSON.stringify(snap.val()));
 
-	    var thoughtArr = [];
+		var thoughtArr = [];
 
-	    for (var key in out) {
-    		if (out.hasOwnProperty(key)) {
-        		thoughtArr.push(key);
-    		}
+		for (var key in out) {
+			if (out.hasOwnProperty(key)) {
+				thoughtArr.push(key);
+			}
 		}
-	    var randChoice = Math.floor(Math.random() * thoughtArr.length);
+		var randChoice = Math.floor(Math.random() * thoughtArr.length);
 
-	    out[thoughtArr[randChoice]]["id"] = thoughtArr[randChoice]
+		out[thoughtArr[randChoice]]["id"] = thoughtArr[randChoice]
 
-	    response.status(200).send(out[thoughtArr[randChoice]]);
+		response.status(200).send(out[thoughtArr[randChoice]]);
 	});
 
 });
@@ -96,12 +96,16 @@ exports.purgeThoughts = functions.https.onRequest(async (request, response) => {
 		return
 	}
 
-	admin.database().forEach(function(snap) {
-		if(snap.key() + 604800 < time) {
-			// more than a week old
-			snap.remove()
-		}
-	})
+	admin.database().ref('messages').on('value', function(snap) {
+		snap.forEach(function (snap2) {
+			var when = snap2.key;
+			console.log(time + " " + when)
+			if((parseInt(when)/1000) + 604800 < time) {
+            	// more than a week old
+            	console.log("deleted")
+            }
+        });
+    });
 
 	response.status(200).send("Older thoughts have been purged.");
 });
