@@ -12,8 +12,8 @@
   "author": "Bianca Hanly, Zak Hori, Le Jeffrey Liang, Benjamin Plate",
   "license": "UNLICENSED",
   "devDependencies": {
-    "electron": "^9.0.2",
+    "electron": "^9.1.1",
     "electron-installer-dmg": "^3.0.0",
-    "electron-winstaller": "^4.0.0"
+    "electron-winstaller": "^4.0.1"
   }
 }
